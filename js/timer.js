@@ -44,3 +44,26 @@
 //     }
 //   }, 1000);
 // };
+
+
+// function timer() {
+// 	// Update the count every 1 second
+// 	time = setInterval(function() {
+// 		seconds++;
+// 			if (seconds === 60) {
+// 				minutes++;
+// 				seconds = 0;
+// 			}
+// 		// Update the timer in HTML with the time it takes the user to play the game
+// 		timeCounter.innerHTML = "<i class='fa fa-hourglass-start'></i>" + " Timer: " + minutes + " Mins " + seconds + " Secs" ;
+// 	}, 1000);
+// }
+
+// /*
+// Stop the timer once the user has matched
+// all 16 cards, total of 8 pairs
+// Used: https://www.w3schools.com/js/js_timing.asp
+// */
+// function stopTime() {
+// 	clearInterval(time);
+// }

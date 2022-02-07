@@ -12,20 +12,37 @@
     <div class="main-container">
       <div class="wrapper-button">
         <a href="#" class="button" id="btn-reset">Play Again</a>
+        <button class="teststart">test start time</button>
       </div>
       <div class="platform">
+        <div class="wrapper-for-score-and-time">
+          <div class="container-wrapper-score">
+            <div class="wrapper-score">
+              <h2 class="your-score-dummy-text">Your score:</h2>
+              <h2 class="score"></h3>
+            </div>
+          </div>
         <div class="container-wrapper-time">
           <div class="wrapper-time">
-            <h3 class="heading timer">0:00</h3>
+            <lottie-player class="lottie-animation" src="https://assets6.lottiefiles.com/packages/lf20_i0mxtka6.json"  background="transparent"  speed="1"  style="width: 35px; height: 35px;" loop autoplay></lottie-player>
+            <h3 class="heading-timer"></h3>
+            
+            <!-- <h3><span id="minute">0</span>:<span id="second">0</span>:<span id="millisecond">0</span></h3> -->
           </div>
         </div>
-        <div class="container-wrapper-score">
-          <div class="wrapper-score">
-            <h3 class="your-score-dummy-text">Your score:</h3>
-            <h3 class="score">x</h3>
-          </div>
-        </div>
+      </div>
         <div class="grid">
+          <div class="card click-card" id="0">
+            <!-- front -->
+            <div class="front card-face">
+              <div class="card-img-overlay"></div>
+            </div>
+
+            <!--back -->
+            <div class="back card-face rounded text-center">
+              <div class="card-body mt-3">back</div>
+            </div>
+          </div>
           <div class="card click-card" id="1">
             <!-- front -->
             <div class="front card-face">
@@ -127,7 +144,7 @@
           </div>
           <div class="card click-card" id="10">
             <!-- front -->
-            <div class="front card-face">
+            <div class="front card-face" >
               <div class="card-img-overlay"></div>
             </div>
 
@@ -136,9 +153,9 @@
               <div class="card-body mt-3">back</div>
             </div>
           </div>
-          <div class="card click-card">
+          <div class="card click-card" id="11">
             <!-- front -->
-            <div class="front card-face" id="11">
+            <div class="front card-face">
               <div class="card-img-overlay"></div>
             </div>
 
@@ -411,20 +428,10 @@
               <div class="card-body mt-3">back</div>
             </div>
           </div>
-          <div class="card click-card" id="36">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <script src="/js/app.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </body>
 </html>
