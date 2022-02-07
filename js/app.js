@@ -4,14 +4,48 @@ const scoreBoard = document.querySelector('.score');
 
 const hTimer = document.querySelector('.heading-timer');
 const testStartBtn = document.querySelector('.teststart');
-// const millisecondT = document.getElementById('millisecond');
-// console.log(millisecondT);
-// const secondT = document.getElementById('second');
-// const minuteT = document.getElementById('minute');
 const counterHeading = document.querySelector('.heading-timer');
 
 let clickedArrNum = [];
 let score = [];
+let marvelChar = [
+	'antman.jpg',
+	'blackpanther.jpg',
+	'blackwidow.jpg',
+	'captainamerica.jpg',
+	'captainmarvel.jpg',
+	'deadpool.jpg',
+	'drstrange.jpg',
+	'hulk.jpg',
+	'ironman.jpg',
+	'loki.jpg',
+	'mystique.jpg',
+	'shangchi.jpg',
+	'spiderman.jpg',
+	'thanos.jpg',
+	'thor.jpg',
+	'ultron.jpg',
+	'venom.jpg',
+	'vision.jpg',
+	'antman.jpg',
+	'blackpanther.jpg',
+	'blackwidow.jpg',
+	'captainamerica.jpg',
+	'captainmarvel.jpg',
+	'deadpool.jpg',
+	'drstrange.jpg',
+	'hulk.jpg',
+	'ironman.jpg',
+	'loki.jpg',
+	'mystique.jpg',
+	'shangchi.jpg',
+	'spiderman.jpg',
+	'thanos.jpg',
+	'thor.jpg',
+	'ultron.jpg',
+	'venom.jpg',
+	'vision.jpg'
+];
 let deckCards = [
 	1,
 	2,
@@ -51,41 +85,13 @@ let deckCards = [
 	18
 ];
 
-// let timerInterval;
-// const timeRun = () => {
-// 	clearInterval(timerInterval);
-
-// 	let milliseconds = 0;
-// 	let seconds = 0;
-// 	let minutes = 0;
-
-// 	timerInterval = setInterval(() => {
-// 		millisecondT.innerText = returnDataTime(milliseconds);
-// 		secondT.innerText = returnDataTime(seconds);
-// 		minuteT.innerText = returnDataTime(minutes);
-
-// 		if ((milliseconds += 10) == 1000) {
-// 			milliseconds = 0;
-// 			seconds++;
-// 		}
-// 		if (seconds == 60) {
-// 			seconds = 0;
-// 			minutes++;
-// 		}
-// 	}, 1000);
-// };
-
-// const returnDataTime = (input) => {
-// 	return input > 10 ? input : `0${input}`;
-// };
-
 let time;
 let minutes = 0;
 let seconds = 0;
 
 const timeRun = () => {
 	// Update the count every 1 second
-	time = setInterval(function() {
+	time = setInterval(() => {
 		seconds++;
 		if (seconds === 60) {
 			minutes++;
@@ -98,14 +104,9 @@ const timeRun = () => {
 	console.log('press');
 };
 
-/*
-Stop the timer once the user has matched
-all 16 cards, total of 8 pairs
-Used: https://www.w3schools.com/js/js_timing.asp
-*/
-function stopTime() {
+const stopTime = () => {
 	clearInterval(time);
-}
+};
 
 testStartBtn.addEventListener('click', timeRun);
 
@@ -122,7 +123,8 @@ const shuffle = (arr) => {
 	return arr;
 };
 shuffle(deckCards);
-
+shuffle(marvelChar);
+console.log(marvelChar);
 // console.log(deckCards)
 
 const tiles = document.querySelectorAll('.click-card');
@@ -130,6 +132,7 @@ const tiles = document.querySelectorAll('.click-card');
 document.querySelectorAll('.click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
 		toggleOnClick(item);
+		// item.style.backgroundImage = 'url(./images/spiderman.jpg)'
 		// clickedArrNum.push(parseInt(item.id));
 		inputNumberInTile(item, i);
 		// clickedArrNum.push(parseInt(item.lastElementChild.innerText = deckCards[i]))
@@ -170,35 +173,6 @@ const inputNumberInTile = (el, i) => {
 const toggleOnClick = (el) => {
 	el.classList.toggle('flipped');
 };
-
-// grid.addEventListener("click", startTimer);
-
-// const unMatched = () => {
-//   disabled()
-
-//   setTimeout(() => {
-//     clickedArrNum[0].classList.remove("flipped")
-//     clickedArrNum[1].classList.remove("flipped")
-
-//     enable()
-//     clickedArrNum = []
-//   }, 1100)
-
-// }
-
-// const disabled = () => {
-//   Array.prototype.filter.call(clickedArrNum, (num) => {
-//     console.log(num)
-//     num.classList.add('disabled')
-//   })
-// }
-
-// const enable = () => {
-//   Array.prototype.filter.call(clickedArrNum, (num) => {
-//     console.log(num)
-//     num.classList.remove('disabled')
-//   })
-// }
 
 //When clicked on a tile
 //- add "flipped" css class
