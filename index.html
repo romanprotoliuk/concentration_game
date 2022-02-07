@@ -12,24 +12,43 @@
     <div class="main-container">
       <div class="wrapper-button">
         <a href="#" class="button" id="btn-reset">Play Again</a>
-        <button class="teststart">test start time</button>
+        <!-- <button class="teststart">test start time</button> -->
       </div>
       <div class="platform">
         <div class="wrapper-for-score-and-time">
           <div class="container-wrapper-score">
             <div class="wrapper-score">
               <h2 class="your-score-dummy-text">Your score:</h2>
-              <h2 class="score"></h3>
+              <h2 class="score">0</h3>
             </div>
-          </div>
+        </div>
         <div class="container-wrapper-time">
           <div class="wrapper-time">
             <lottie-player class="lottie-animation" src="https://assets6.lottiefiles.com/packages/lf20_i0mxtka6.json"  background="transparent"  speed="1"  style="width: 35px; height: 35px;" loop autoplay></lottie-player>
-            <h3 class="heading-timer"></h3>
-            
+            <div class="wrapper-container-timer">
+              <h3 class="heading-timer"></h3>
+            </div>
             <!-- <h3><span id="minute">0</span>:<span id="second">0</span>:<span id="millisecond">0</span></h3> -->
           </div>
         </div>
+        <!-- change this to wrapper-final-prompt in CSS -->
+        <div class="wrapper-final-prompt wrapper-final-prompt-hide">
+          <div class="endgame-wrapper">
+            <h1 class="heading">End Game</h1>
+            <div class="wrapper-time-endgame">
+              <h3 class="heading-2">Time:</h3>
+              <h3 class="heading-3">02:30</h3>
+            </div>
+            <div class="wrapping-score-endgame">
+              <h3 class="heading-2">Score:</h3>
+              <h3 class="heading-3">18</h3>
+            </div>
+            <div class="wrapping-score-endgame">
+              <h3 class="heading-2">Accuracy</h3>
+              <h3 class="heading-3">100%</h3>
+            </div>
+            </div>
+          </div>
       </div>
         <div class="grid">
           <div class="card click-card" id="0">

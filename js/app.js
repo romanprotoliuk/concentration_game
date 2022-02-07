@@ -3,11 +3,19 @@ const grid = document.querySelector('.grid');
 const scoreBoard = document.querySelector('.score');
 
 const hTimer = document.querySelector('.heading-timer');
-const testStartBtn = document.querySelector('.teststart');
 const counterHeading = document.querySelector('.heading-timer');
+
+const restartGameBtn = document.querySelector('.button');
+
+const finalPropmt = document.querySelector('.wrapper-final-prompt');
+const finalPropmtTime = document.querySelector('.heading-3');
+
+const containerWrapperTime = document.querySelector('.container-wrapper-time');
+const containerWrapperScore = document.querySelector('.container-wrapper-score');
 
 let clickedArrNum = [];
 let score = [];
+console.log(score);
 let marvelChar = [
 	'antman.jpg',
 	'blackpanther.jpg',
@@ -85,30 +93,48 @@ let deckCards = [
 	18
 ];
 
+let testDeckCards = [
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1,
+	1
+];
+
 let time;
 let minutes = 0;
 let seconds = 0;
-
-const timeRun = () => {
-	// Update the count every 1 second
-	time = setInterval(() => {
-		seconds++;
-		if (seconds === 60) {
-			minutes++;
-			seconds = 0;
-		}
-		// Update the timer in HTML with the time it takes the user to play the game
-		hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
-	}, 1000);
-	document.querySelector('.lottie-animation').style.display = 'block';
-	console.log('press');
-};
-
-const stopTime = () => {
-	clearInterval(time);
-};
-
-testStartBtn.addEventListener('click', timeRun);
 
 // this function will shuffle deckCards
 // The Fisher-Yates Algorithm
@@ -119,77 +145,125 @@ const shuffle = (arr) => {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
-	console.log(arr);
+	// console.log(arr);
 	return arr;
 };
 shuffle(deckCards);
 shuffle(marvelChar);
-console.log(marvelChar);
-// console.log(deckCards)
 
 const tiles = document.querySelectorAll('.click-card');
+
+// Check for a win function and display prompt
+// finalPropmt.classList.remove('wrapper-final-prompt-hide');
 
 document.querySelectorAll('.click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
 		toggleOnClick(item);
 		// item.style.backgroundImage = 'url(./images/spiderman.jpg)'
-		// clickedArrNum.push(parseInt(item.id));
 		inputNumberInTile(item, i);
-		// clickedArrNum.push(parseInt(item.lastElementChild.innerText = deckCards[i]))
 		console.log(item.innerText);
 		clickedArrNum.push(item);
+
 		// This checks for a match, if yes adds a class that hides both elements
 		if (clickedArrNum.length === 2) {
 			document.body.style.pointerEvents = 'none';
-
 			if (clickedArrNum[0].innerText === clickedArrNum[1].innerText) {
 				setTimeout(() => {
 					clickedArrNum[0].classList.add('match');
 					clickedArrNum[1].classList.add('match');
-					score++;
 
+					clickedArrNum = [];
 					document.body.style.pointerEvents = 'auto';
-				}, 600);
-			} else if (clickedArrNum[0].innerText != clickedArrNum[1].innerText) {
+				}, 500);
+				score++;
+			} else if (clickedArrNum[0].innerText !== clickedArrNum[1].innerText) {
 				setTimeout(() => {
 					clickedArrNum[0].classList.remove('flipped');
 					clickedArrNum[1].classList.remove('flipped');
 					console.log(clickedArrNum);
 
+					clickedArrNum = [];
 					document.body.style.pointerEvents = 'auto';
 				}, 700);
+			} else {
+				clickedArrNum[0].classList.remove('flipped');
+				clickedArrNum[1].classList.remove('flipped');
+				clickedArrNum = [];
 			}
 			scoreBoard.innerText = score;
-			clickedArrNum = [];
 		}
+		checkWin();
 	});
 });
 
+// helper functions for StartGame
 const inputNumberInTile = (el, i) => {
-	el.lastElementChild.innerText = deckCards[i];
-	// console.log(el.lastElementChild.innerText = deckCards[i])
+	el.lastElementChild.innerText = testDeckCards[i];
 };
-
 const toggleOnClick = (el) => {
 	el.classList.toggle('flipped');
 };
 
-//When clicked on a tile
-//- add "flipped" css class
-//- push value to the clickArrNum
+// Restart function
+const restart = () => {
+	finalPropmt.classList.add('wrapper-final-prompt-hide');
+	containerWrapperScore.classList.remove('hide-this');
+	containerWrapperTime.classList.add('hide-this');
+	scoreBoard.innerText = 0;
+	shuffle(deckCards);
+	stopTime(time);
+	seconds = 0;
+	minutes = 0;
+	hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+	score = [];
+	document.querySelectorAll('.click-card').forEach((item) => {
+		item.classList.remove('flipped');
+		setTimeout(() => {
+			item.classList.remove('match');
+		}, 200);
+	});
+	grid.removeEventListener('click', restart);
+};
 
-//Check clickArrNum if it has 2 values
+restartGameBtn.addEventListener('click', restart);
 
-//if clickArrNum has two numbers
-//- disable any clicks on other tiles on the board
-//- setTimeout function *not sure where to place this* ???????
-//- check if the two numbers match
-//if they do
-//- add css class matched
-//- remove disabled
-//- update score
-//if they don't
-//- set timeout
-//- remove flipped
-//- remove disabled
-//- update clickArrNum to 0
+// Timer
+const timeRun = () => {
+	time = setInterval(() => {
+		seconds++;
+		console.log(seconds);
+		if (seconds === 60) {
+			minutes++;
+			seconds = 0;
+		}
+		hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+	}, 1000);
+	document.querySelector('.lottie-animation').style.display = 'block';
+	// console.log('press');
+};
+const stopTime = (time) => {
+	clearInterval(time);
+	console.log(`Seconds: ${seconds}`);
+	console.log(`Minutes: ${minutes}`);
+
+	seconds = 0;
+	minutes = 0;
+	console.log(`Seconds: ${seconds}`);
+	console.log(`Minutes: ${minutes}`);
+};
+
+const checkWin = () => {
+	console.log(score);
+	if (score === 18) {
+		finalPropmt.classList.remove('wrapper-final-prompt-hide');
+		containerWrapperScore.classList.add('hide-this');
+		containerWrapperTime.classList.add('hide-this');
+		finalPropmtTime.innerText = minutes + ' Mins ' + seconds + ' Secs';
+		clearInterval(time);
+		console.log('Prompt displayed');
+	} else {
+		console.log('There was a bug in CheckWin');
+	}
+};
+
+grid.addEventListener('click', timeRun, { once: true });

@@ -1,7 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
-
-
 * {
   box-sizing: border-box;
 }
@@ -11,7 +9,7 @@ body {
   /* background-color: #E4EBF5;
   background-color: #f5f5f5; */
   font-family: 'Poppins', sans-serif;
-  color: #6e2626;
+  color: black;
   
 }
 
@@ -158,6 +156,7 @@ box-shadow:  21px 21px 42px #bebebe,
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  z-index: 10;
   /* box-shadow: .3rem .3rem .6rem #c8d0e7, 
 -.2rem -.2rem .5rem #FFFFFF; */
   /* box-shadow:
@@ -181,23 +180,27 @@ box-shadow:  21px 21px 42px #bebebe,
   right: auto;
   bottom: auto; */
   display: flex;
+  align-items: center;
+  align-content: center;
   width: auto;
-  height: 50px;
+  /* height: 50px; */
   align-items: flex-end;
-  line-height: 14px;
+  /* line-height: 14px; */
+  /* margin-bottom: 10px; */
 }
 
 .wrapper-score {
   display: flex;
+  align-items: center;
+  align-content: stretch;
   padding-bottom: 0px;
   padding-left: 3px;
-  align-items: center;
 }
 
 .your-score-dummy-text {
   margin-top: 0px;
-  margin-bottom: px;
-  line-height: 24px;
+  margin-bottom: 0px;
+  /* line-height: 24px; */
 }
 
 .score {
@@ -205,14 +208,14 @@ box-shadow:  21px 21px 42px #bebebe,
   margin-bottom: 0px;
   margin-left: 10px;
   padding-left: 0px;
-  line-height: 24px;
+  /* line-height: 24px; */
 }
 
 .wrapper-for-score-and-time {
   width: 780px;
   position: absolute;
   left: auto;
-  top: -7%;
+  top: -6%;
   right: auto;
   bottom: auto;
   display: flex;
@@ -223,7 +226,7 @@ box-shadow:  21px 21px 42px #bebebe,
 
 .container-wrapper-time {
   display: flex;
-  height: 30px;
+  /* height: 30px; */
   align-items: flex-end;
 }
 
@@ -235,7 +238,6 @@ box-shadow:  21px 21px 42px #bebebe,
 
 
 h3 {
-  color: #6e2626;
   font-size: 14px;
   font-weight: 500;
   margin-block-start: 0em;
@@ -244,12 +246,18 @@ h3 {
 }
 
 .wrapper-time {
-  width: 215px;
+  width: 205px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-right: 7px;
   padding-bottom: 0px;
+}
+
+.wrapper-container-timer {
+  display: flex;
+  align-self: flex-end;
+  padding-bottom: 3px;
 }
 
 .lottie-animation {
@@ -263,6 +271,83 @@ h3 {
 
 .disabled {
   pointer-events: none;
+}
+
+
+/* Endprompt */
+.wrapper-final-prompt {
+  position: absolute;
+  top: -150%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  
+}
+
+.wrapper-final-prompt-hide {
+  display: none;
+}
+
+.endgame-wrapper {
+  position: relative;
+  top: -100px;
+  width: 400px;
+}
+
+.heading {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  line-height: 38px;
+  text-align: center;
+}
+
+.wrapper-time-endgame {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 40px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.heading-2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.heading-3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.wrapping-score-endgame {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.hide-this {
+  display: none;
 }
 
 @media screen and (max-width: 991px) {
