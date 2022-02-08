@@ -93,6 +93,9 @@ box-shadow:  21px 21px 42px #bebebe,
   height: 7rem;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  background-image: url(./images/marvelLogo.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .back {
@@ -292,7 +295,7 @@ h3 {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  
+  /* background-image: url(./images/antman.jpg); */
 }
 
 .wrapper-final-prompt-hide {
