@@ -248,7 +248,7 @@ h3 {
 .wrapper-time {
   width: 205px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding-right: 7px;
   padding-bottom: 0px;

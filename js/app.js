@@ -12,6 +12,7 @@ const finalPropmtTime = document.querySelector('.heading-3');
 
 const containerWrapperTime = document.querySelector('.container-wrapper-time');
 const containerWrapperScore = document.querySelector('.container-wrapper-score');
+const lottie = document.querySelector('.lottie-animation');
 
 let clickedArrNum = [];
 let score = [];
@@ -157,6 +158,7 @@ const tiles = document.querySelectorAll('.click-card');
 // finalPropmt.classList.remove('wrapper-final-prompt-hide');
 
 document.querySelectorAll('.click-card').forEach((item, i) => {
+	// showTime();
 	item.addEventListener('click', () => {
 		toggleOnClick(item);
 		// item.style.backgroundImage = 'url(./images/spiderman.jpg)'
@@ -204,17 +206,24 @@ const toggleOnClick = (el) => {
 	el.classList.toggle('flipped');
 };
 
+const showTime = () => {
+	containerWrapperTime.classList.remove('hide-this');
+};
+
+const lottieShow = () => {};
+
 // Restart function
 const restart = () => {
 	finalPropmt.classList.add('wrapper-final-prompt-hide');
 	containerWrapperScore.classList.remove('hide-this');
-	containerWrapperTime.classList.add('hide-this');
+	containerWrapperTime.classList.remove('hide-this');
 	scoreBoard.innerText = 0;
 	shuffle(deckCards);
 	stopTime(time);
 	seconds = 0;
 	minutes = 0;
 	hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+	timeRun();
 	score = [];
 	document.querySelectorAll('.click-card').forEach((item) => {
 		item.classList.remove('flipped');
@@ -222,7 +231,7 @@ const restart = () => {
 			item.classList.remove('match');
 		}, 200);
 	});
-	grid.removeEventListener('click', restart);
+	// grid.removeEventListener('click', restart);
 };
 
 restartGameBtn.addEventListener('click', restart);
@@ -231,36 +240,28 @@ restartGameBtn.addEventListener('click', restart);
 const timeRun = () => {
 	time = setInterval(() => {
 		seconds++;
-		console.log(seconds);
 		if (seconds === 60) {
 			minutes++;
 			seconds = 0;
 		}
 		hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
 	}, 1000);
-	document.querySelector('.lottie-animation').style.display = 'block';
-	// console.log('press');
 };
 const stopTime = (time) => {
 	clearInterval(time);
-	console.log(`Seconds: ${seconds}`);
-	console.log(`Minutes: ${minutes}`);
-
 	seconds = 0;
 	minutes = 0;
-	console.log(`Seconds: ${seconds}`);
-	console.log(`Minutes: ${minutes}`);
 };
 
 const checkWin = () => {
-	console.log(score);
 	if (score === 18) {
-		finalPropmt.classList.remove('wrapper-final-prompt-hide');
+		setTimeout(() => {
+			finalPropmt.classList.remove('wrapper-final-prompt-hide');
+		}, 1200);
 		containerWrapperScore.classList.add('hide-this');
 		containerWrapperTime.classList.add('hide-this');
 		finalPropmtTime.innerText = minutes + ' Mins ' + seconds + ' Secs';
 		clearInterval(time);
-		console.log('Prompt displayed');
 	} else {
 		console.log('There was a bug in CheckWin');
 	}

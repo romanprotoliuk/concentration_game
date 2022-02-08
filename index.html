@@ -1,456 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="main.css" />
-
-    <title>Concentration Game</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <div class="wrapper-button">
-        <a href="#" class="button" id="btn-reset">Play Again</a>
-        <!-- <button class="teststart">test start time</button> -->
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="main.css" />
+      <title>Concentration Game</title>
+   </head>
+   <body>
+      <div class="main-container">
+         <div class="wrapper-button">
+            <a href="#" class="button" id="btn-reset">Play Again</a>
+            <!-- <button class="teststart">test start time</button> -->
+         </div>
+         <div class="platform">
+            <div class="wrapper-for-score-and-time">
+               <div class="container-wrapper-score">
+                  <div class="wrapper-score">
+                     <h2 class="your-score-dummy-text">Your score:</h2>
+                     <h2 class="score">
+                     0</h3>
+                  </div>
+               </div>
+               <div class="container-wrapper-time">
+                  <div class="wrapper-time">
+                     <!-- <lottie-player class="lottie-animation hide-this" src="https://assets6.lottiefiles.com/packages/lf20_i0mxtka6.json"  background="transparent"  speed="1"  style="width: 35px; height: 35px;" loop autoplay></lottie-player> -->
+                     <div class="wrapper-container-timer">
+                        <h3 class="heading-timer"></h3>
+                     </div>
+                     <!-- <h3><span id="minute">0</span>:<span id="second">0</span>:<span id="millisecond">0</span></h3> -->
+                  </div>
+               </div>
+               <!-- change this to wrapper-final-prompt in CSS -->
+               <div class="wrapper-final-prompt wrapper-final-prompt-hide">
+                  <div class="endgame-wrapper">
+                     <h1 class="heading">End Game</h1>
+                     <div class="wrapper-time-endgame">
+                        <h3 class="heading-2">Time:</h3>
+                        <h3 class="heading-3">02:30</h3>
+                     </div>
+                     <div class="wrapping-score-endgame">
+                        <h3 class="heading-2">Score:</h3>
+                        <h3 class="heading-3">18</h3>
+                     </div>
+                     <div class="wrapping-score-endgame">
+                        <h3 class="heading-2">Accuracy</h3>
+                        <h3 class="heading-3">100%</h3>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="grid">
+               <div class="card click-card" id="0">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="1">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="2">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="3">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="4">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="5">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="6">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="7">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="8">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="9">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="10">
+                  <!-- front -->
+                  <div class="front card-face" >
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="11">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="12">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="13">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="14">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="15">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="16">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="17">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="18">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="19">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="20">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="21">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="22">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="23">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="24">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="25">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="26">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="27">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="28">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="29">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="30">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="31">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="32">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="33">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="34">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+               <div class="card click-card" id="35">
+                  <!-- front -->
+                  <div class="front card-face">
+                     <div class="card-img-overlay"></div>
+                  </div>
+                  <!--back -->
+                  <div class="back card-face rounded text-center">
+                     <div class="card-body mt-3">back</div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
-      <div class="platform">
-        <div class="wrapper-for-score-and-time">
-          <div class="container-wrapper-score">
-            <div class="wrapper-score">
-              <h2 class="your-score-dummy-text">Your score:</h2>
-              <h2 class="score">0</h3>
-            </div>
-        </div>
-        <div class="container-wrapper-time">
-          <div class="wrapper-time">
-            <lottie-player class="lottie-animation" src="https://assets6.lottiefiles.com/packages/lf20_i0mxtka6.json"  background="transparent"  speed="1"  style="width: 35px; height: 35px;" loop autoplay></lottie-player>
-            <div class="wrapper-container-timer">
-              <h3 class="heading-timer"></h3>
-            </div>
-            <!-- <h3><span id="minute">0</span>:<span id="second">0</span>:<span id="millisecond">0</span></h3> -->
-          </div>
-        </div>
-        <!-- change this to wrapper-final-prompt in CSS -->
-        <div class="wrapper-final-prompt wrapper-final-prompt-hide">
-          <div class="endgame-wrapper">
-            <h1 class="heading">End Game</h1>
-            <div class="wrapper-time-endgame">
-              <h3 class="heading-2">Time:</h3>
-              <h3 class="heading-3">02:30</h3>
-            </div>
-            <div class="wrapping-score-endgame">
-              <h3 class="heading-2">Score:</h3>
-              <h3 class="heading-3">18</h3>
-            </div>
-            <div class="wrapping-score-endgame">
-              <h3 class="heading-2">Accuracy</h3>
-              <h3 class="heading-3">100%</h3>
-            </div>
-            </div>
-          </div>
-      </div>
-        <div class="grid">
-          <div class="card click-card" id="0">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="1">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="2">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="3">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="4">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="5">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="6">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="7">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="8">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="9">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="10">
-            <!-- front -->
-            <div class="front card-face" >
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="11">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="12">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="13">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="14">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="15">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="16">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="17">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="18">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="19">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="20">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="21">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="22">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="23">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="24">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="25">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="26">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="27">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="28">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="29">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="30">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="31">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="32">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="33">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="34">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-          <div class="card click-card" id="35">
-            <!-- front -->
-            <div class="front card-face">
-              <div class="card-img-overlay"></div>
-            </div>
-
-            <!--back -->
-            <div class="back card-face rounded text-center">
-              <div class="card-body mt-3">back</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script src="/js/app.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  </body>
+      <script src="/js/app.js"></script>
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+   </body>
 </html>
