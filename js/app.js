@@ -1,33 +1,59 @@
+/* ============DOM!============ */
+
+// LEVEL EASY DOM
+const resetEasy = document.querySelector('.easy-button');
+const gridEasy = document.querySelector('.easy-grid');
+const scoreBoardEasy = document.querySelector('.easy-score');
+const promptHeadingScoreEasy = document.querySelector('.easy-prompt-heading-score');
+const hTimerEasy = document.querySelector('.easy-heading-timer');
+const restartGameBtnEasy = document.querySelector('.easy-button');
+const containerWrapperTimeEasy = document.querySelector('.easy-container-wrapper-time');
+const containerWrapperScoreEasy = document.querySelector('.easy-container-wrapper-score');
+// Final Prompt
+const finalPropmtEasy = document.querySelector('.easy-wrapper-final-prompt');
+const accuracyPromptEasy = document.querySelector('.easy-accuracy');
+const finalPropmtTimeEasy = document.querySelector('.easy-heading-3-time');
+
+// LEVEL MODERATE DOM
+const resetModerate = document.querySelector('.moderate-button');
+const gridModerate = document.querySelector('.moderate-grid');
+const scoreBoardModerate = document.querySelector('.moderate-score');
+const promptHeadingScoreModerate = document.querySelector('.moderate-prompt-heading-score');
+const hTimerModerate = document.querySelector('.moderate-heading-timer');
+const restartGameBtnModerate = document.querySelector('.moderate-button');
+const containerWrapperTimeModerate = document.querySelector('.moderate-container-wrapper-time');
+const containerWrapperScoreModerate = document.querySelector('.moderate-container-wrapper-score');
+// Final Prompt
+const finalPropmtModerate = document.querySelector('.moderate-wrapper-final-prompt');
+const accuracyPromptModerate = document.querySelector('.moderate-accuracy');
+const finalPropmtTimeModerate = document.querySelector('.moderate-heading-3-time');
+
+// LEVEL HARD DOM
 const reset = document.querySelector('.button');
 const grid = document.querySelector('.grid');
 const scoreBoard = document.querySelector('.score');
 const promptHeadingScore = document.querySelector('.prompt-heading-score');
-
 const hTimer = document.querySelector('.heading-timer');
-const counterHeading = document.querySelector('.heading-timer');
-
 const restartGameBtn = document.querySelector('.button');
-
-const finalPropmt = document.querySelector('.wrapper-final-prompt');
-const finalPropmtTime = document.querySelector('.heading-3');
-
 const containerWrapperTime = document.querySelector('.container-wrapper-time');
 const containerWrapperScore = document.querySelector('.container-wrapper-score');
-const lottie = document.querySelector('.lottie-animation');
+// Final Prompt
+const finalPropmt = document.querySelector('.wrapper-final-prompt');
+const accuracyPrompt = document.querySelector('.accuracy');
+const finalPropmtTime = document.querySelector('.heading-3-time');
 
-// menu
+// MENU
 const mainMenu = document.querySelector('.main-menu-wrapper');
 // menu buttons
 const easyLevelBtn = document.querySelector('.easy-level-btn');
 const moderateLevelBtn = document.querySelector('.moderate-level-btn');
 const hardLevelBtn = document.querySelector('.hard-level-btn');
-
-// levels
+// LEVELS
 const easyLevel = document.querySelector('.easy-main-container');
 const moderateLevel = document.querySelector('.moderate-main-container');
 const hardLevel = document.querySelector('.main-container');
 
-// level change
+// LEVEL CHANGE
 easyLevelBtn.addEventListener('click', () => {
 	mainMenu.style.display = 'none';
 	easyLevel.classList.remove('hide-this');
@@ -42,6 +68,8 @@ hardLevelBtn.addEventListener('click', () => {
 	mainMenu.style.display = 'none';
 	hardLevel.classList.remove('hide-this');
 });
+
+// VARIABLES
 
 let clickedArrNum = [];
 let clickedArrNumId = [];
@@ -188,6 +216,10 @@ shuffle(marvelChar);
 
 const tiles = document.querySelectorAll('.click-card');
 
+document.querySelectorAll('.easy-click-card').forEach((item, i) => {});
+
+document.querySelectorAll('.moderate-click-card').forEach((item, i) => {});
+
 document.querySelectorAll('.click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
 		userClicks++;
@@ -254,9 +286,51 @@ const showTime = () => {
 	containerWrapperTime.classList.remove('hide-this');
 };
 
-const lottieShow = () => {};
+// Restart function for Moderate Level
+const restartEasy = () => {
+	finalPropmtEasy.classList.add('easy-wrapper-final-prompt-hide');
+	containerWrapperScoreEasy.classList.remove('hide-this');
+	containerWrapperTimeEasy.classList.remove('hide-this');
+	scoreBoardEasy.innerText = 0;
+	shuffle(deckCards);
+	stopTime(time);
+	seconds = 0;
+	minutes = 0;
+	hTimerEasy.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+	timeRun();
+	score = 0;
+	match = 0;
+	document.querySelectorAll('.click-card').forEach((item) => {
+		item.classList.remove('flipped');
+		setTimeout(() => {
+			item.classList.remove('match');
+		}, 400);
+	});
+};
 
-// Restart function
+// Restart function for Moderate Level
+const restartModerate = () => {
+	finalPropmtModerate.classList.add('moderate-wrapper-final-prompt-hide');
+	containerWrapperScoreModerate.classList.remove('hide-this');
+	containerWrapperTimeModerate.classList.remove('hide-this');
+	scoreBoardModerate.innerText = 0;
+	shuffle(deckCards);
+	stopTime(time);
+	seconds = 0;
+	minutes = 0;
+	hTimerModerate.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+	timeRun();
+	score = 0;
+	match = 0;
+	document.querySelectorAll('.click-card').forEach((item) => {
+		item.classList.remove('flipped');
+		setTimeout(() => {
+			item.classList.remove('match');
+		}, 400);
+	});
+};
+
+// Restart function Level Hard
 const restart = () => {
 	finalPropmt.classList.add('wrapper-final-prompt-hide');
 	containerWrapperScore.classList.remove('hide-this');
@@ -279,6 +353,8 @@ const restart = () => {
 	// grid.removeEventListener('click', restart);
 };
 
+restartGameBtnEasy.addEventListener('click', restartEasy);
+restartGameBtnModerate.addEventListener('click', restartModerate);
 restartGameBtn.addEventListener('click', restart);
 
 // Timer

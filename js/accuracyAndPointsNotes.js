@@ -4,3 +4,9 @@
 // background music
 // look up .play()
 //
+
+// accuracy
+// there can be 36 total clicks
+// x = number of clicks a user made
+// y = 36 / x
+// y * 100
