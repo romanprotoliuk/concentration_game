@@ -15,10 +15,39 @@ const containerWrapperTime = document.querySelector('.container-wrapper-time');
 const containerWrapperScore = document.querySelector('.container-wrapper-score');
 const lottie = document.querySelector('.lottie-animation');
 
+// menu
+const mainMenu = document.querySelector('.main-menu-wrapper');
+// menu buttons
+const easyLevelBtn = document.querySelector('.easy-level-btn');
+const moderateLevelBtn = document.querySelector('.moderate-level-btn');
+const hardLevelBtn = document.querySelector('.hard-level-btn');
+
+// levels
+const easyLevel = document.querySelector('.easy-main-container');
+const moderateLevel = document.querySelector('.moderate-main-container');
+const hardLevel = document.querySelector('.main-container');
+
+// level change
+easyLevelBtn.addEventListener('click', () => {
+	mainMenu.style.display = 'none';
+	easyLevel.classList.remove('hide-this');
+});
+
+moderateLevelBtn.addEventListener('click', () => {
+	mainMenu.style.display = 'none';
+	moderateLevel.classList.remove('hide-this');
+});
+
+hardLevelBtn.addEventListener('click', () => {
+	mainMenu.style.display = 'none';
+	hardLevel.classList.remove('hide-this');
+});
+
 let clickedArrNum = [];
+let clickedArrNumId = [];
 let score = 0;
+let match = 0;
 let userClicks = 0;
-console.log(score);
 let marvelChar = [
 	'antman.jpg',
 	'blackpanther.jpg',
@@ -139,6 +168,10 @@ let time;
 let minutes = 0;
 let seconds = 0;
 
+document.querySelector('.main-container').classList.add('hide-this');
+document.querySelector('.moderate-main-container').classList.add('hide-this');
+document.querySelector('.easy-main-container').classList.add('hide-this');
+
 // this function will shuffle deckCards
 // The Fisher-Yates Algorithm
 const shuffle = (arr) => {
@@ -151,81 +184,70 @@ const shuffle = (arr) => {
 	// console.log(arr);
 	return arr;
 };
-shuffle(deckCards);
 shuffle(marvelChar);
-
-console.log('./images/thanos.jpg' === './images/thanos.jpg');
 
 const tiles = document.querySelectorAll('.click-card');
 
-// Check for a win function and display prompt
-// finalPropmt.classList.remove('wrapper-final-prompt-hide');
-
 document.querySelectorAll('.click-card').forEach((item, i) => {
-	// showTime();
 	item.addEventListener('click', () => {
 		userClicks++;
+
+		if (item.classList[2] === 'flipped') {
+			// item.style.pointerEvents = 'none';
+			console.log('this is true');
+			clickedArrNum.pop();
+			console.log(clickedArrNum);
+		} else {
+			clickedArrNum.push(item);
+		}
+
 		toggleOnClick(item);
-		// item.style.backgroundImage = 'url(./images/spiderman.jpg)'
-		inputNumberInTile(item, i);
-		// console.log(item.innerText);
-		console.log(item.lastElementChild.style.cssText);
+		item.style.pointerEvents = 'auto';
+		inputAttributeInTile(item, i);
 		// clickedArrNum.push(item);
+		console.log(clickedArrNum);
 
-		clickedArrNum.push(item);
-
-		// console.log(item.lastElementChild);
-
-		// This checks for a match, if yes adds a class that hides both elements
 		if (clickedArrNum.length === 2) {
 			document.body.style.pointerEvents = 'none';
 			if (clickedArrNum[0].lastElementChild.style.cssText === clickedArrNum[1].lastElementChild.style.cssText) {
-				setTimeout(() => {
-					clickedArrNum[0].classList.add('match');
-					clickedArrNum[1].classList.add('match');
-
-					clickedArrNum = [];
-					document.body.style.pointerEvents = 'auto';
-				}, 500);
-				// score++;
-				score += 3;
+				matched();
 			} else if (
 				clickedArrNum[0].lastElementChild.style.cssText !== clickedArrNum[1].lastElementChild.style.cssText
 			) {
-				setTimeout(() => {
-					clickedArrNum[0].classList.remove('flipped');
-					clickedArrNum[1].classList.remove('flipped');
-					console.log(clickedArrNum);
-
-					clickedArrNum = [];
-					document.body.style.pointerEvents = 'auto';
-				}, 700);
-			} else {
-				clickedArrNum[0].classList.remove('flipped');
-				clickedArrNum[1].classList.remove('flipped');
-				clickedArrNum = [];
+				notMatched();
 			}
 			scoreBoard.innerText = score;
 		}
 		checkWin();
 	});
 });
-
-// helper functions for StartGame
-// const inputNumberInTile = (el, i) => {
-// 	el.lastElementChild.innerText = testDeckCards[i];
-// };
-
-const inputNumberInTile = (el, i) => {
+const toggleOnClick = (el) => {
+	el.classList.toggle('flipped');
+};
+const notMatched = () => {
+	setTimeout(() => {
+		clickedArrNum[0].classList.remove('flipped');
+		clickedArrNum[1].classList.remove('flipped');
+		clickedArrNum = [];
+		document.body.style.pointerEvents = 'auto';
+	}, 700);
+};
+const matched = () => {
+	match++;
+	setTimeout(() => {
+		clickedArrNum[0].classList.add('match');
+		clickedArrNum[1].classList.add('match');
+		clickedArrNum = [];
+		document.body.style.pointerEvents = 'auto';
+	}, 500);
+	score += 3;
+};
+const inputAttributeInTile = (el, i) => {
 	el.lastElementChild.setAttribute(
 		'style',
 		`background-image: url(./images/${marvelChar[i]}); background-position: 50% 50%;
   background-size: cover;`
 	);
-};
-
-const toggleOnClick = (el) => {
-	el.classList.toggle('flipped');
 };
 
 const showTime = () => {
@@ -247,11 +269,12 @@ const restart = () => {
 	hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
 	timeRun();
 	score = 0;
+	match = 0;
 	document.querySelectorAll('.click-card').forEach((item) => {
 		item.classList.remove('flipped');
 		setTimeout(() => {
 			item.classList.remove('match');
-		}, 200);
+		}, 400);
 	});
 	// grid.removeEventListener('click', restart);
 };
@@ -276,18 +299,19 @@ const stopTime = (time) => {
 };
 
 const checkWin = () => {
-	if (score === 54) {
+	if (match === 18) {
 		setTimeout(() => {
 			finalPropmt.classList.remove('wrapper-final-prompt-hide');
 		}, 1200);
 		console.log(`user clicks: ${userClicks}`);
+		console.log(`match: ${match}`);
 		containerWrapperScore.classList.add('hide-this');
 		containerWrapperTime.classList.add('hide-this');
 		finalPropmtTime.innerText = minutes + ' Mins ' + seconds + ' Secs';
 		promptHeadingScore.innerText = score;
 		clearInterval(time);
 	} else {
-		console.log('There was a bug in CheckWin');
+		// console.log('There was a bug in CheckWin');
 	}
 };
 
