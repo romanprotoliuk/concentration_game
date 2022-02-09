@@ -213,22 +213,15 @@ const shuffle = (arr) => {
 	return arr;
 };
 shuffle(marvelChar);
-
+// console.log(marvelChar);
 const tiles = document.querySelectorAll('.click-card');
 
-document.querySelectorAll('.easy-click-card').forEach((item, i) => {});
-
-document.querySelectorAll('.moderate-click-card').forEach((item, i) => {});
-
-document.querySelectorAll('.click-card').forEach((item, i) => {
+document.querySelectorAll('.easy-click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
 		userClicks++;
 
 		if (item.classList[2] === 'flipped') {
-			// item.style.pointerEvents = 'none';
-			console.log('this is true');
 			clickedArrNum.pop();
-			console.log(clickedArrNum);
 		} else {
 			clickedArrNum.push(item);
 		}
@@ -236,8 +229,65 @@ document.querySelectorAll('.click-card').forEach((item, i) => {
 		toggleOnClick(item);
 		item.style.pointerEvents = 'auto';
 		inputAttributeInTile(item, i);
-		// clickedArrNum.push(item);
-		console.log(clickedArrNum);
+
+		if (clickedArrNum.length === 2) {
+			document.body.style.pointerEvents = 'none';
+			if (clickedArrNum[0].lastElementChild.style.cssText === clickedArrNum[1].lastElementChild.style.cssText) {
+				matched();
+			} else if (
+				clickedArrNum[0].lastElementChild.style.cssText !== clickedArrNum[1].lastElementChild.style.cssText
+			) {
+				notMatched();
+			}
+			scoreBoard.innerText = score;
+		}
+		checkWin();
+	});
+});
+
+document.querySelectorAll('.moderate-click-card').forEach((item, i) => {
+	item.addEventListener('click', () => {
+		userClicks++;
+
+		if (item.classList[2] === 'flipped') {
+			clickedArrNum.pop();
+		} else {
+			clickedArrNum.push(item);
+		}
+
+		toggleOnClick(item);
+		item.style.pointerEvents = 'auto';
+		console.log(i);
+		inputAttributeInTile(item, i);
+
+		if (clickedArrNum.length === 2) {
+			document.body.style.pointerEvents = 'none';
+			if (clickedArrNum[0].lastElementChild.style.cssText === clickedArrNum[1].lastElementChild.style.cssText) {
+				matched();
+			} else if (
+				clickedArrNum[0].lastElementChild.style.cssText !== clickedArrNum[1].lastElementChild.style.cssText
+			) {
+				notMatched();
+			}
+			scoreBoard.innerText = score;
+		}
+		checkWin();
+	});
+});
+
+document.querySelectorAll('.click-card').forEach((item, i) => {
+	item.addEventListener('click', () => {
+		userClicks++;
+
+		if (item.classList[2] === 'flipped') {
+			clickedArrNum.pop();
+		} else {
+			clickedArrNum.push(item);
+		}
+
+		toggleOnClick(item);
+		item.style.pointerEvents = 'auto';
+		inputAttributeInTile(item, i);
 
 		if (clickedArrNum.length === 2) {
 			document.body.style.pointerEvents = 'none';
@@ -387,7 +437,6 @@ const checkWin = () => {
 		promptHeadingScore.innerText = score;
 		clearInterval(time);
 	} else {
-		// console.log('There was a bug in CheckWin');
 	}
 };
 

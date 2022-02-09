@@ -538,6 +538,33 @@ body {
   padding-left: 0px;
 }
 
+
+.easy-wrapper-for-score-and-time {
+  width: 538px;
+  position: absolute;
+  left: auto;
+  top: -8.5%;
+  right: auto;
+  bottom: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.moderate-wrapper-for-score-and-time {
+  width: 657px;
+  position: absolute;
+  left: auto;
+  top: -7%;
+  right: auto;
+  bottom: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
 .wrapper-for-score-and-time {
   width: 780px;
   position: absolute;
