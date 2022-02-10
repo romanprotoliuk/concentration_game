@@ -14,6 +14,8 @@ const finalPropmtEasy = document.querySelector('.easy-wrapper-final-prompt');
 const accuracyPromptEasy = document.querySelector('.easy-accuracy');
 const finalPropmtTimeEasy = document.querySelector('.easy-heading-3-time');
 
+const easyPlatformChangeColor = document.querySelector('.easy-platform');
+
 const easyGoToMenu = document.querySelector('.easy-gotomenu-button');
 
 // LEVEL HARD DOM
@@ -29,6 +31,8 @@ const containerWrapperScore = document.querySelector('.container-wrapper-score')
 const finalPropmt = document.querySelector('.wrapper-final-prompt');
 const accuracyPrompt = document.querySelector('.accuracy');
 const finalPropmtTime = document.querySelector('.heading-3-time');
+
+const hardPlatformChangeColor = document.querySelector('.platform');
 
 const hardGoToMenu = document.querySelector('.hard-gotomenu-button');
 
@@ -309,15 +313,18 @@ const restartEasy = () => {
 	finalPropmtEasy.classList.add('easy-wrapper-final-prompt-hide');
 	containerWrapperScoreEasy.classList.remove('hide-this');
 	containerWrapperTimeEasy.classList.remove('hide-this');
+	easyPlatformChangeColor.style.backgroundColor = '#e12835';
 	scoreBoardEasy.innerText = 0;
 	shuffle(marvelCharLevelEasy);
 	stopTime(timeEasy);
 	seconds = 0;
 	minutes = 0;
-	hTimerEasy.innerText = ' Timer: ' + minutesEasy + ' Mins ' + secondsEasy + ' Secs';
+	hTimerEasy.innerText = minutesEasy + ' Mins ' + secondsEasy + ' Secs';
 	timeRunEasy();
 	scoreEasy = 0;
 	matchEasy = 0;
+	userClicksEasy = 0;
+
 	document.querySelectorAll('.easy-click-card').forEach((item) => {
 		item.classList.remove('flipped');
 		setTimeout(() => {
@@ -331,15 +338,17 @@ const restart = () => {
 	finalPropmt.classList.add('wrapper-final-prompt-hide');
 	containerWrapperScore.classList.remove('hide-this');
 	containerWrapperTime.classList.remove('hide-this');
+	hardPlatformChangeColor.style.backgroundColor = '#e12835';
 	scoreBoard.innerText = 0;
-	shuffle(deckCards);
+	shuffle(marvelCharLevelHard);
 	stopTime(time);
 	seconds = 0;
 	minutes = 0;
-	hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+	hTimer.innerText = minutes + ' Mins ' + seconds + ' Secs';
 	timeRun();
 	score = 0;
 	match = 0;
+	userClicks = 0;
 	document.querySelectorAll('.click-card').forEach((item) => {
 		item.classList.remove('flipped');
 		setTimeout(() => {
@@ -360,7 +369,7 @@ const timeRun = () => {
 			minutes++;
 			seconds = 0;
 		}
-		hTimer.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+		hTimer.innerText = minutes + ' Mins ' + seconds + ' Secs';
 	}, 1000);
 };
 const stopTime = (time) => {
@@ -377,7 +386,7 @@ const timeRunEasy = () => {
 			minutes++;
 			seconds = 0;
 		}
-		hTimerEasy.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+		hTimerEasy.innerText = minutes + ' Mins ' + seconds + ' Secs';
 	}, 1000);
 };
 const stopTimeEasy = (timeEasy) => {
@@ -390,6 +399,7 @@ const checkWin = () => {
 	if (match === 18) {
 		setTimeout(() => {
 			finalPropmt.classList.remove('wrapper-final-prompt-hide');
+			hardPlatformChangeColor.style.backgroundColor = 'black';
 		}, 1200);
 		containerWrapperScore.classList.add('hide-this');
 		containerWrapperTime.classList.add('hide-this');
@@ -405,6 +415,7 @@ const checkWinEasy = () => {
 	if (matchEasy === 8) {
 		setTimeout(() => {
 			finalPropmtEasy.classList.remove('easy-wrapper-final-prompt-hide');
+			easyPlatformChangeColor.style.backgroundColor = 'black';
 		}, 1200);
 		containerWrapperScoreEasy.classList.add('hide-this');
 		containerWrapperTimeEasy.classList.add('hide-this');
