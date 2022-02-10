@@ -6,7 +6,8 @@
 //
 
 // accuracy
-// there can be 36 total clicks
+// Level Hard
+// there can be 36 total clicks in a perfect winning situation
 // x = number of clicks a user made
 // y = 36 / x
 // y * 100

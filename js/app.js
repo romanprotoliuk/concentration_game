@@ -14,19 +14,7 @@ const finalPropmtEasy = document.querySelector('.easy-wrapper-final-prompt');
 const accuracyPromptEasy = document.querySelector('.easy-accuracy');
 const finalPropmtTimeEasy = document.querySelector('.easy-heading-3-time');
 
-// LEVEL MODERATE DOM
-const resetModerate = document.querySelector('.moderate-button');
-const gridModerate = document.querySelector('.moderate-grid');
-const scoreBoardModerate = document.querySelector('.moderate-score');
-const promptHeadingScoreModerate = document.querySelector('.moderate-prompt-heading-score');
-const hTimerModerate = document.querySelector('.moderate-heading-timer');
-const restartGameBtnModerate = document.querySelector('.moderate-button');
-const containerWrapperTimeModerate = document.querySelector('.moderate-container-wrapper-time');
-const containerWrapperScoreModerate = document.querySelector('.moderate-container-wrapper-score');
-// Final Prompt
-const finalPropmtModerate = document.querySelector('.moderate-wrapper-final-prompt');
-const accuracyPromptModerate = document.querySelector('.moderate-accuracy');
-const finalPropmtTimeModerate = document.querySelector('.moderate-heading-3-time');
+const easyGoToMenu = document.querySelector('.easy-gotomenu-button');
 
 // LEVEL HARD DOM
 const reset = document.querySelector('.button');
@@ -42,11 +30,12 @@ const finalPropmt = document.querySelector('.wrapper-final-prompt');
 const accuracyPrompt = document.querySelector('.accuracy');
 const finalPropmtTime = document.querySelector('.heading-3-time');
 
+const hardGoToMenu = document.querySelector('.hard-gotomenu-button');
+
 // MENU
 const mainMenu = document.querySelector('.main-menu-wrapper');
 // menu buttons
 const easyLevelBtn = document.querySelector('.easy-level-btn');
-const moderateLevelBtn = document.querySelector('.moderate-level-btn');
 const hardLevelBtn = document.querySelector('.hard-level-btn');
 // LEVELS
 const easyLevel = document.querySelector('.easy-main-container');
@@ -59,14 +48,18 @@ easyLevelBtn.addEventListener('click', () => {
 	easyLevel.classList.remove('hide-this');
 });
 
-moderateLevelBtn.addEventListener('click', () => {
-	mainMenu.style.display = 'none';
-	moderateLevel.classList.remove('hide-this');
-});
-
 hardLevelBtn.addEventListener('click', () => {
 	mainMenu.style.display = 'none';
 	hardLevel.classList.remove('hide-this');
+});
+
+// Go back to Menu
+easyGoToMenu.addEventListener('click', () => {
+	window.location.reload();
+});
+// Go back to Menu
+hardGoToMenu.addEventListener('click', () => {
+	window.location.reload();
 });
 
 // VARIABLES
@@ -75,8 +68,11 @@ let clickedArrNum = [];
 let clickedArrNumId = [];
 let score = 0;
 let match = 0;
+let scoreEasy = 0;
+let matchEasy = 0;
 let userClicks = 0;
-let marvelChar = [
+let userClicksEasy = 0;
+let marvelCharLevelHard = [
 	'antman.jpg',
 	'blackpanther.jpg',
 	'blackwidow.jpg',
@@ -114,90 +110,34 @@ let marvelChar = [
 	'venom.jpg',
 	'vision.jpg'
 ];
-let deckCards = [
-	1,
-	2,
-	3,
-	4,
-	5,
-	6,
-	7,
-	8,
-	9,
-	10,
-	11,
-	12,
-	13,
-	14,
-	15,
-	16,
-	17,
-	18,
-	1,
-	2,
-	3,
-	4,
-	5,
-	6,
-	7,
-	8,
-	9,
-	10,
-	11,
-	12,
-	13,
-	14,
-	15,
-	16,
-	17,
-	18
-];
-
-let testDeckCards = [
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1,
-	1
+let marvelCharLevelEasy = [
+	'blackpanther.jpg',
+	'captainamerica.jpg',
+	'drstrange.jpg',
+	'ironman.jpg',
+	'hulk.jpg',
+	'spiderman.jpg',
+	'thor.jpg',
+	'mystique.jpg',
+	'blackpanther.jpg',
+	'captainamerica.jpg',
+	'drstrange.jpg',
+	'ironman.jpg',
+	'hulk.jpg',
+	'spiderman.jpg',
+	'thor.jpg',
+	'mystique.jpg'
 ];
 
 let time;
 let minutes = 0;
 let seconds = 0;
 
+let timeEasy;
+let minutesEasy = 0;
+let secondsEasy = 0;
+
 document.querySelector('.main-container').classList.add('hide-this');
-document.querySelector('.moderate-main-container').classList.add('hide-this');
 document.querySelector('.easy-main-container').classList.add('hide-this');
 
 // this function will shuffle deckCards
@@ -209,16 +149,14 @@ const shuffle = (arr) => {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
-	// console.log(arr);
 	return arr;
 };
-shuffle(marvelChar);
-// console.log(marvelChar);
-const tiles = document.querySelectorAll('.click-card');
+shuffle(marvelCharLevelHard);
+shuffle(marvelCharLevelEasy);
 
 document.querySelectorAll('.easy-click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
-		userClicks++;
+		userClicksEasy++;
 
 		if (item.classList[2] === 'flipped') {
 			clickedArrNum.pop();
@@ -228,50 +166,20 @@ document.querySelectorAll('.easy-click-card').forEach((item, i) => {
 
 		toggleOnClick(item);
 		item.style.pointerEvents = 'auto';
-		inputAttributeInTile(item, i);
+		inputAttributeInTileLevelEasy(item, i);
 
 		if (clickedArrNum.length === 2) {
 			document.body.style.pointerEvents = 'none';
 			if (clickedArrNum[0].lastElementChild.style.cssText === clickedArrNum[1].lastElementChild.style.cssText) {
-				matched();
+				matchedEasy();
 			} else if (
 				clickedArrNum[0].lastElementChild.style.cssText !== clickedArrNum[1].lastElementChild.style.cssText
 			) {
 				notMatched();
 			}
-			scoreBoard.innerText = score;
+			scoreBoardEasy.innerText = scoreEasy;
 		}
-		checkWin();
-	});
-});
-
-document.querySelectorAll('.moderate-click-card').forEach((item, i) => {
-	item.addEventListener('click', () => {
-		userClicks++;
-
-		if (item.classList[2] === 'flipped') {
-			clickedArrNum.pop();
-		} else {
-			clickedArrNum.push(item);
-		}
-
-		toggleOnClick(item);
-		item.style.pointerEvents = 'auto';
-		console.log(i);
-		inputAttributeInTile(item, i);
-
-		if (clickedArrNum.length === 2) {
-			document.body.style.pointerEvents = 'none';
-			if (clickedArrNum[0].lastElementChild.style.cssText === clickedArrNum[1].lastElementChild.style.cssText) {
-				matched();
-			} else if (
-				clickedArrNum[0].lastElementChild.style.cssText !== clickedArrNum[1].lastElementChild.style.cssText
-			) {
-				notMatched();
-			}
-			scoreBoard.innerText = score;
-		}
-		checkWin();
+		checkWinEasy();
 	});
 });
 
@@ -287,7 +195,7 @@ document.querySelectorAll('.click-card').forEach((item, i) => {
 
 		toggleOnClick(item);
 		item.style.pointerEvents = 'auto';
-		inputAttributeInTile(item, i);
+		inputAttributeInTileLevelHard(item, i);
 
 		if (clickedArrNum.length === 2) {
 			document.body.style.pointerEvents = 'none';
@@ -324,10 +232,30 @@ const matched = () => {
 	}, 500);
 	score += 3;
 };
-const inputAttributeInTile = (el, i) => {
+
+const matchedEasy = () => {
+	matchEasy++;
+	setTimeout(() => {
+		clickedArrNum[0].classList.add('match');
+		clickedArrNum[1].classList.add('match');
+		clickedArrNum = [];
+		document.body.style.pointerEvents = 'auto';
+	}, 500);
+	scoreEasy += 3;
+};
+
+const inputAttributeInTileLevelHard = (el, i) => {
 	el.lastElementChild.setAttribute(
 		'style',
-		`background-image: url(./images/${marvelChar[i]}); background-position: 50% 50%;
+		`background-image: url(./images/${marvelCharLevelHard[i]}); background-position: 50% 50%;
+  background-size: cover;`
+	);
+};
+
+const inputAttributeInTileLevelEasy = (el, i) => {
+	el.lastElementChild.setAttribute(
+		'style',
+		`background-image: url(./images/${marvelCharLevelEasy[i]}); background-position: 50% 50%;
   background-size: cover;`
 	);
 };
@@ -336,43 +264,25 @@ const showTime = () => {
 	containerWrapperTime.classList.remove('hide-this');
 };
 
+const showTimeEasy = () => {
+	containerWrapperTimeEasy.classList.remove('hide-this');
+};
+
 // Restart function for Moderate Level
 const restartEasy = () => {
 	finalPropmtEasy.classList.add('easy-wrapper-final-prompt-hide');
 	containerWrapperScoreEasy.classList.remove('hide-this');
 	containerWrapperTimeEasy.classList.remove('hide-this');
 	scoreBoardEasy.innerText = 0;
-	shuffle(deckCards);
-	stopTime(time);
+	shuffle(marvelCharLevelEasy);
+	stopTime(timeEasy);
 	seconds = 0;
 	minutes = 0;
-	hTimerEasy.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
-	timeRun();
-	score = 0;
-	match = 0;
-	document.querySelectorAll('.click-card').forEach((item) => {
-		item.classList.remove('flipped');
-		setTimeout(() => {
-			item.classList.remove('match');
-		}, 400);
-	});
-};
-
-// Restart function for Moderate Level
-const restartModerate = () => {
-	finalPropmtModerate.classList.add('moderate-wrapper-final-prompt-hide');
-	containerWrapperScoreModerate.classList.remove('hide-this');
-	containerWrapperTimeModerate.classList.remove('hide-this');
-	scoreBoardModerate.innerText = 0;
-	shuffle(deckCards);
-	stopTime(time);
-	seconds = 0;
-	minutes = 0;
-	hTimerModerate.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
-	timeRun();
-	score = 0;
-	match = 0;
-	document.querySelectorAll('.click-card').forEach((item) => {
+	hTimerEasy.innerText = ' Timer: ' + minutesEasy + ' Mins ' + secondsEasy + ' Secs';
+	timeRunEasy();
+	scoreEasy = 0;
+	matchEasy = 0;
+	document.querySelectorAll('.easy-click-card').forEach((item) => {
 		item.classList.remove('flipped');
 		setTimeout(() => {
 			item.classList.remove('match');
@@ -400,11 +310,10 @@ const restart = () => {
 			item.classList.remove('match');
 		}, 400);
 	});
-	// grid.removeEventListener('click', restart);
+	// `grid`.removeEventListener('click', restart);
 };
 
 restartGameBtnEasy.addEventListener('click', restartEasy);
-restartGameBtnModerate.addEventListener('click', restartModerate);
 restartGameBtn.addEventListener('click', restart);
 
 // Timer
@@ -424,20 +333,71 @@ const stopTime = (time) => {
 	minutes = 0;
 };
 
+// Timer
+const timeRunEasy = () => {
+	timeEasy = setInterval(() => {
+		seconds++;
+		if (seconds === 60) {
+			minutes++;
+			seconds = 0;
+		}
+		hTimerEasy.innerText = ' Timer: ' + minutes + ' Mins ' + seconds + ' Secs';
+	}, 1000);
+};
+const stopTimeEasy = (timeEasy) => {
+	clearInterval(timeEasy);
+	secondsEasy = 0;
+	minutesEasy = 0;
+};
+
 const checkWin = () => {
 	if (match === 18) {
 		setTimeout(() => {
 			finalPropmt.classList.remove('wrapper-final-prompt-hide');
 		}, 1200);
-		console.log(`user clicks: ${userClicks}`);
-		console.log(`match: ${match}`);
 		containerWrapperScore.classList.add('hide-this');
 		containerWrapperTime.classList.add('hide-this');
 		finalPropmtTime.innerText = minutes + ' Mins ' + seconds + ' Secs';
 		promptHeadingScore.innerText = score;
+		calculateAccuracyHard();
 		clearInterval(time);
 	} else {
 	}
 };
 
+const checkWinEasy = () => {
+	if (matchEasy === 8) {
+		setTimeout(() => {
+			finalPropmtEasy.classList.remove('easy-wrapper-final-prompt-hide');
+		}, 1200);
+		containerWrapperScoreEasy.classList.add('hide-this');
+		containerWrapperTimeEasy.classList.add('hide-this');
+		finalPropmtTimeEasy.innerText = minutes + ' Mins ' + seconds + ' Secs';
+		promptHeadingScoreEasy.innerText = scoreEasy;
+		calculateAccuracyEasy();
+		clearInterval(time);
+		console.log(userClicksEasy);
+	} else {
+	}
+};
+
+const calculateAccuracyHard = () => {
+	// there can be 36 total clicks in a perfect winning situation
+	// x = number of clicks a user made
+	y = Math.round(36 / userClicks * 100);
+	accuracyPrompt.innerText = y;
+	// y = 36 / x
+	// y * 100
+};
+
+const calculateAccuracyEasy = () => {
+	// there can be 36 total clicks in a perfect winning situation
+	// x = number of clicks a user made
+	y = Math.round(16 / userClicksEasy * 100);
+	accuracyPromptEasy.innerText = y + '%';
+	// y = 36 / x
+	// y * 100
+};
+
+gridEasy.addEventListener('click', timeRunEasy, { once: true });
 grid.addEventListener('click', timeRun, { once: true });

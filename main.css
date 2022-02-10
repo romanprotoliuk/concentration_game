@@ -41,7 +41,7 @@ body {
   display: flex;
   width: auto;
   height: auto;
-  padding: 30px;
+  padding: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -188,7 +188,7 @@ body {
   display: flex;
   width: auto;
   height: auto;
-  padding: 30px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   border-radius: 21px;
@@ -391,12 +391,24 @@ body {
   right: 0%;
   bottom: 10%;
   display: flex;
+  flex-direction: column;
+
   height: 100px;
   max-width: 800px;
   margin-right: auto;
   margin-left: auto;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+}
+
+.easy-gotomenu-button {
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.hard-gotomenu-button {
+  margin-top: 20px;
+  text-decoration: none;
 }
 
 .moderate-wrapper-button {
@@ -420,15 +432,18 @@ body {
   left: 0%;
   top: auto;
   right: 0%;
-  bottom: 0%;
+  bottom: -1%;
   display: flex;
-  height: 100px;
+  flex-direction: column;
+  height: 50px;
   max-width: 800px;
   margin-right: auto;
   margin-left: auto;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
+
+
 
 .easy-button {
   display: flex;
@@ -443,6 +458,7 @@ body {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  padding: 18px;
   z-index: 10;
 }
 
@@ -466,6 +482,7 @@ body {
   display: flex;
   width: 200px;
   height: 50px;
+  padding: 18px;
   margin-top: 6%;
   justify-content: center;
   align-items: center;
@@ -583,6 +600,12 @@ body {
   align-items: flex-end;
 }
 
+.easy-container-wrapper-time {
+  display: flex;
+  align-items: flex-end;
+}
+
+
 .heading {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -647,13 +670,29 @@ h3 {
   align-items: center;
 }
 
+.easy-wrapper-final-prompt {
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+  display: flex;
+  width: 100%;
+  height: 300px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .easy-wrapper-final-prompt-hide {
   display: none;
 }
 
-.moderate-wrapper-final-prompt-hide {
-  display: none;
-}
 
 .wrapper-final-prompt-hide {
   display: none;
@@ -661,7 +700,7 @@ h3 {
 
 .endgame-wrapper {
   position: relative;
-  top: -100px;
+  top: 250px;
   width: 400px;
 }
 
@@ -732,6 +771,8 @@ h3 {
 }
 
 .menu-container {
+  position: relative;
+  top: -50px;
   width: 400px;
   height: 550px;
   border: 1px solid #000;
