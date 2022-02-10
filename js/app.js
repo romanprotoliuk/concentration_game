@@ -177,7 +177,9 @@ document.querySelectorAll('.easy-click-card').forEach((item, i) => {
 			) {
 				notMatched();
 			}
-			scoreBoardEasy.innerText = scoreEasy;
+			setTimeout(() => {
+				scoreBoardEasy.innerText = scoreEasy;
+			}, 700);
 		}
 		checkWinEasy();
 	});
@@ -206,7 +208,9 @@ document.querySelectorAll('.click-card').forEach((item, i) => {
 			) {
 				notMatched();
 			}
-			scoreBoard.innerText = score;
+			setTimeout(() => {
+				scoreBoard.innerText = score;
+			}, 700);
 		}
 		checkWin();
 	});
@@ -221,6 +225,16 @@ const notMatched = () => {
 		clickedArrNum = [];
 		document.body.style.pointerEvents = 'auto';
 	}, 700);
+	setTimeout(() => {
+		if (score > 0) {
+			score -= 1;
+		}
+	}, 700);
+	setTimeout(() => {
+		if (scoreEasy > 0) {
+			scoreEasy -= 1;
+		}
+	}, 700);
 };
 const matched = () => {
 	match++;
@@ -230,7 +244,7 @@ const matched = () => {
 		clickedArrNum = [];
 		document.body.style.pointerEvents = 'auto';
 	}, 500);
-	score += 3;
+	score += 10;
 };
 
 const matchedEasy = () => {
@@ -241,7 +255,7 @@ const matchedEasy = () => {
 		clickedArrNum = [];
 		document.body.style.pointerEvents = 'auto';
 	}, 500);
-	scoreEasy += 3;
+	scoreEasy += 10;
 };
 
 const inputAttributeInTileLevelHard = (el, i) => {
@@ -385,7 +399,7 @@ const calculateAccuracyHard = () => {
 	// there can be 36 total clicks in a perfect winning situation
 	// x = number of clicks a user made
 	y = Math.round(36 / userClicks * 100);
-	accuracyPrompt.innerText = y;
+	accuracyPrompt.innerText = y + '%';
 	// y = 36 / x
 	// y * 100
 };
