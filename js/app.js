@@ -45,11 +45,13 @@ const hardLevel = document.querySelector('.main-container');
 // LEVEL CHANGE
 easyLevelBtn.addEventListener('click', () => {
 	mainMenu.style.display = 'none';
+	audioPause();
 	easyLevel.classList.remove('hide-this');
 });
 
 hardLevelBtn.addEventListener('click', () => {
 	mainMenu.style.display = 'none';
+	audioPause();
 	hardLevel.classList.remove('hide-this');
 });
 
@@ -62,6 +64,21 @@ hardGoToMenu.addEventListener('click', () => {
 	window.location.reload();
 });
 
+const themeSong = document.getElementById('theme-song');
+
+window.addEventListener('DOMContentLoaded', (event) => {
+	console.log('DOM fully loaded and parsed');
+
+	autoPlay();
+});
+
+const autoPlay = () => {
+	themeSong.play(); //play the audio file
+};
+
+const audioPause = () => {
+	themeSong.pause();
+};
 // VARIABLES
 
 let clickedArrNum = [];
@@ -153,6 +170,11 @@ const shuffle = (arr) => {
 };
 shuffle(marvelCharLevelHard);
 shuffle(marvelCharLevelEasy);
+
+// const playBackgroundMusic = () => {
+// 	const audio = new Audio('./sound/The-Avengers-Theme-Song.mp3');
+// 	audio.play();
+// };
 
 document.querySelectorAll('.easy-click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
