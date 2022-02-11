@@ -1447,6 +1447,34 @@ h3 {
 
 /* Easy Responsive */
 @media screen and (max-width: 479px) {
+  .studios {
+    font-weight: 500;
+    letter-spacing: -1rem;
+    transform: translateX(-95px);
+  }
+
+  .restart {
+    color: white;
+    margin-top: 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -0.08rem;
+    transition: opacity 150ms linear;
+    pointer-events: none;
+  }
+
+  .marvel, .studios {
+    position: relative;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.2rem;
+    font-size: 2.5rem;
+    margin: 0.05rem 0.05rem 0.5rem;
+    padding: 0 0.4rem;
+    display: inline-block;
+    pointer-events: none;
+  }
+
   .easy-platform {
     border-style: none;
   }
@@ -1454,6 +1482,99 @@ h3 {
   .easy-cell {
     width: 4rem;
     height: 4rem;
+  }
+
+  .card {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 3px;
+    /* outline-color: #6e6d64;
+    outline-offset: 0px;
+    outline-style: solid;
+    outline-width: 1px; */
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    cursor: pointer;
+    background-position: 50% 50%;
+    background-size: cover;
+  }
+  .card-face {
+    position: absolute;
+    border-radius: 3px;
+    width: 3.2rem;
+    height: 3.2rem;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-image: url(./images/marvelLogo.jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+    /* outline-color: black;
+    outline-offset: 0px;
+    outline-style: solid;
+    outline-width: 1px; */
+  }
+
+  .easy-wrapper-for-score-and-time {
+    width: 278px;
+    position: absolute;
+    left: auto;
+    top: -20%;
+    right: auto;
+    bottom: auto;
+    display: inline-block;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+  }
+
+  h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    text-transform: uppercase;
+  }
+
+  .wrapper-for-score-and-time {
+    width: 350px;
+    position: absolute;
+    left: auto;
+    top: -16%;
+    right: auto;
+    bottom: auto;
+    display: inline-block;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+  }
+
+  .wrapper-score {
+    pointer-events: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    align-content: stretch;
+    padding-bottom: 10px;
+    padding-left: 3px;
+  }
+
+  .wrapper-time {
+    width: 205px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 7px;
+    padding-left: 5px;
+    padding-bottom: 0px;
   }
 }
 
@@ -1534,8 +1655,15 @@ h3 {
 
 
 @media screen and (max-width: 479px) {
+
+  .logo {
+    /* cursor: pointer; */
+    text-align: center;
+    /* padding-bottom: 180px; */
+  }
+
   .platform {
-    padding: 0px;
+    padding: 10px;
     outline-color: #333;
     outline-offset: 0px;
     outline-style: none;
