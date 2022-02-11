@@ -107,8 +107,8 @@ body {
   background-size: cover;
 }
 .card {
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 5.7rem;
+  height: 5.7rem;
   border-radius: 3px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -132,8 +132,8 @@ body {
 .card-face {
   position: absolute;
   border-radius: 3px;
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 5.7rem;
+  height: 5.7rem;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-image: url(./images/marvelLogo.jpg);
@@ -274,7 +274,7 @@ body {
   align-content: center;
 }
 .wrapper-for-score-and-time {
-  width: 720px;
+  width: 650px;
   position: absolute;
   left: auto;
   top: -6%;
