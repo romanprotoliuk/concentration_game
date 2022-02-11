@@ -46,6 +46,9 @@ const easyLevel = document.querySelector('.easy-main-container');
 const moderateLevel = document.querySelector('.moderate-main-container');
 const hardLevel = document.querySelector('.main-container');
 
+// Audio Match
+const matchAudio = new Audio('./sound/match.wav');
+
 // LEVEL CHANGE
 easyLevelBtn.addEventListener('click', () => {
 	mainMenu.style.display = 'none';
@@ -83,7 +86,8 @@ const autoPlay = () => {
 const audioPause = () => {
 	themeSong.pause();
 };
-// VARIABLES
+
+/* ============VARIABLES!============ */
 
 let clickedArrNum = [];
 let clickedArrNumId = [];
@@ -93,6 +97,15 @@ let scoreEasy = 0;
 let matchEasy = 0;
 let userClicks = 0;
 let userClicksEasy = 0;
+
+let time;
+let minutes = 0;
+let seconds = 0;
+
+let timeEasy;
+let minutesEasy = 0;
+let secondsEasy = 0;
+
 let marvelCharLevelHard = [
 	'antman.jpg',
 	'blackpanther.jpg',
@@ -149,14 +162,6 @@ let marvelCharLevelEasy = [
 	'thor.jpg',
 	'mystique.jpg'
 ];
-
-let time;
-let minutes = 0;
-let seconds = 0;
-
-let timeEasy;
-let minutesEasy = 0;
-let secondsEasy = 0;
 
 document.querySelector('.main-container').classList.add('hide-this');
 document.querySelector('.easy-main-container').classList.add('hide-this');
@@ -265,6 +270,7 @@ const notMatched = () => {
 const matched = () => {
 	match++;
 	setTimeout(() => {
+		playMatch();
 		clickedArrNum[0].classList.add('match');
 		clickedArrNum[1].classList.add('match');
 		clickedArrNum = [];
@@ -276,6 +282,7 @@ const matched = () => {
 const matchedEasy = () => {
 	matchEasy++;
 	setTimeout(() => {
+		playMatch();
 		clickedArrNum[0].classList.add('match');
 		clickedArrNum[1].classList.add('match');
 		clickedArrNum = [];
@@ -444,6 +451,10 @@ const calculateAccuracyEasy = () => {
 	accuracyPromptEasy.innerText = y + '%';
 	// y = 36 / x
 	// y * 100
+};
+
+const playMatch = () => {
+	matchAudio.play();
 };
 
 gridEasy.addEventListener('click', timeRunEasy, { once: true });

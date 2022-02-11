@@ -765,6 +765,9 @@ document.querySelector(function() {
 //   }
 // }
 
+// button inspo
+// https://codepen.io/dmensinger/pen/PPRzpK
+
 // BUTTONs for MENU
 // button {
 //   position: absolute;
