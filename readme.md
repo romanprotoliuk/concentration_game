@@ -100,4 +100,4 @@ Overall the game is functional. There is a small bug when a user opens tiles two
 
 I enjoyed working on this project. I pushed myself to the limits and learned alot!
 
-[Link to the game here](https://romanprotoliuk.github.io/marvel_match_game/)
+[Link to game here](https://romanprotoliuk.github.io/marvel_match_game/)
