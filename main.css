@@ -262,7 +262,7 @@ body {
   padding-left: 0px;
 }
 .easy-wrapper-for-score-and-time {
-  width: 495px;
+  width: 443px;
   position: absolute;
   left: auto;
   top: -8.5%;
@@ -1065,7 +1065,7 @@ h3 {
       background-size: cover;
  }
   .easy-wrapper-for-score-and-time {
-      width: 278px;
+      width: 200px;
       position: absolute;
       left: auto;
       top: -20%;
