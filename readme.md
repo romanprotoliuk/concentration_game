@@ -52,7 +52,7 @@ next thing I did was to add event listeners to my grid. So each time user clicks
 
 For my design I was inspired by this codepen [External Link to Codepen](https://codepen.io/samswartz/pen/RjVPPW) - I was able to customize this into my own project and its needs. Also I was inspired by this button design and I implemented it into my own project [External Link to Codepen](https://codepen.io/dmensinger/pen/PPRzpK).
 
-I am proud of this snippet of code below becasue it was really nice to see my logic and my ui come together. It can probably be written more efficient, but I love looking back at it beacause it definitely shows how much I've learned over the last three weeks, and also I am sure that this piece of code with be a good reference to look back at after a year or two and it will help me see how much better I've become. 
+I am proud of this snippet of code below becasue it was really nice to see my logic and my ui come together. It can probably be written more efficient, but I love looking back at it beacause it definitely shows how much I've learned over the last three weeks, and also I am sure that this piece of code will be a good reference to look back at after a year or two and it will help me see how much better I've become. 
 
 ```javascript
 easyClickCard.forEach((item, i) => {
@@ -99,3 +99,5 @@ This is what I've built
 Overall the game is functional. There is a small bug when a user opens tiles two fast they can get stuck in an open position. Happens in rare cases. This is something that I would work on for version 2. Also for version 2 I would make it more mobile friendly with a better user design. 
 
 I enjoyed working on this project. I pushed myself to the limits and learned alot!
+
+[Link to the game here](https://romanprotoliuk.github.io/marvel_match_game/)
