@@ -1,5 +1,4 @@
 /* ============DOM!============ */
-
 // LEVEL EASY DOM
 const resetEasy = document.querySelector('.easy-button');
 const gridEasy = document.querySelector('.easy-grid');
@@ -13,9 +12,7 @@ const containerWrapperScoreEasy = document.querySelector('.easy-container-wrappe
 const finalPropmtEasy = document.querySelector('.easy-wrapper-final-prompt');
 const accuracyPromptEasy = document.querySelector('.easy-accuracy');
 const finalPropmtTimeEasy = document.querySelector('.easy-heading-3-time');
-
 const easyPlatformChangeColor = document.querySelector('.easy-platform');
-
 const easyGoToMenu = document.querySelector('.easy-gotomenu-button');
 
 // LEVEL HARD DOM
@@ -31,9 +28,7 @@ const containerWrapperScore = document.querySelector('.container-wrapper-score')
 const finalPropmt = document.querySelector('.wrapper-final-prompt');
 const accuracyPrompt = document.querySelector('.accuracy');
 const finalPropmtTime = document.querySelector('.heading-3-time');
-
 const hardPlatformChangeColor = document.querySelector('.platform');
-
 const hardGoToMenu = document.querySelector('.hard-gotomenu-button');
 
 // MENU
@@ -62,11 +57,11 @@ hardLevelBtn.addEventListener('click', () => {
 	hardLevel.classList.remove('hide-this');
 });
 
-// Go back to Menu
+// Go back to Menu from Level Easy
 easyGoToMenu.addEventListener('click', () => {
 	window.location.reload();
 });
-// Go back to Menu
+// Go back to Menu from Level Hard
 hardGoToMenu.addEventListener('click', () => {
 	window.location.reload();
 });
@@ -90,7 +85,6 @@ const audioPause = () => {
 /* ============VARIABLES!============ */
 
 let clickedArrNum = [];
-let clickedArrNumId = [];
 let score = 0;
 let match = 0;
 let scoreEasy = 0;
@@ -180,20 +174,11 @@ const shuffle = (arr) => {
 shuffle(marvelCharLevelHard);
 shuffle(marvelCharLevelEasy);
 
-// const playBackgroundMusic = () => {
-// 	const audio = new Audio('./sound/The-Avengers-Theme-Song.mp3');
-// 	audio.play();
-// };
-
 document.querySelectorAll('.easy-click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
 		userClicksEasy++;
 
-		if (item.classList[2] === 'flipped') {
-			clickedArrNum.pop();
-		} else {
-			clickedArrNum.push(item);
-		}
+		filterArr(item);
 
 		toggleOnClick(item);
 		item.style.pointerEvents = 'auto';
@@ -220,11 +205,7 @@ document.querySelectorAll('.click-card').forEach((item, i) => {
 	item.addEventListener('click', () => {
 		userClicks++;
 
-		if (item.classList[2] === 'flipped') {
-			clickedArrNum.pop();
-		} else {
-			clickedArrNum.push(item);
-		}
+		filterArr(item);
 
 		toggleOnClick(item);
 		item.style.pointerEvents = 'auto';
@@ -246,6 +227,15 @@ document.querySelectorAll('.click-card').forEach((item, i) => {
 		checkWin();
 	});
 });
+
+const filterArr = (i) => {
+	if (i.classList[2] === 'flipped') {
+		clickedArrNum.pop();
+	} else {
+		clickedArrNum.push(i);
+	}
+};
+
 const toggleOnClick = (el) => {
 	el.classList.toggle('flipped');
 };
@@ -362,7 +352,6 @@ const restart = () => {
 			item.classList.remove('match');
 		}, 400);
 	});
-	// `grid`.removeEventListener('click', restart);
 };
 
 restartGameBtnEasy.addEventListener('click', restartEasy);
@@ -436,21 +425,13 @@ const checkWinEasy = () => {
 };
 
 const calculateAccuracyHard = () => {
-	// there can be 36 total clicks in a perfect winning situation
-	// x = number of clicks a user made
 	y = Math.round(36 / userClicks * 100);
 	accuracyPrompt.innerText = y + '%';
-	// y = 36 / x
-	// y * 100
 };
 
 const calculateAccuracyEasy = () => {
-	// there can be 36 total clicks in a perfect winning situation
-	// x = number of clicks a user made
 	y = Math.round(16 / userClicksEasy * 100);
 	accuracyPromptEasy.innerText = y + '%';
-	// y = 36 / x
-	// y * 100
 };
 
 const playMatch = () => {
