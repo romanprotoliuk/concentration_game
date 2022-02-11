@@ -8,6 +8,7 @@ const hTimerEasy = document.querySelector('.easy-heading-timer');
 const restartGameBtnEasy = document.querySelector('.easy-button');
 const containerWrapperTimeEasy = document.querySelector('.easy-container-wrapper-time');
 const containerWrapperScoreEasy = document.querySelector('.easy-container-wrapper-score');
+const easyClickCard = document.querySelectorAll('.easy-click-card');
 // Final Prompt
 const finalPropmtEasy = document.querySelector('.easy-wrapper-final-prompt');
 const accuracyPromptEasy = document.querySelector('.easy-accuracy');
@@ -24,6 +25,7 @@ const hTimer = document.querySelector('.heading-timer');
 const restartGameBtn = document.querySelector('.button');
 const containerWrapperTime = document.querySelector('.container-wrapper-time');
 const containerWrapperScore = document.querySelector('.container-wrapper-score');
+const hardClickCard = document.querySelectorAll('.click-card');
 // Final Prompt
 const finalPropmt = document.querySelector('.wrapper-final-prompt');
 const accuracyPrompt = document.querySelector('.accuracy');
@@ -38,49 +40,11 @@ const easyLevelBtn = document.querySelector('.easy-level-btn');
 const hardLevelBtn = document.querySelector('.hard-level-btn');
 // LEVELS
 const easyLevel = document.querySelector('.easy-main-container');
-const moderateLevel = document.querySelector('.moderate-main-container');
+
 const hardLevel = document.querySelector('.main-container');
 
 // Audio Match
 const matchAudio = new Audio('./sound/match.wav');
-
-// LEVEL CHANGE
-easyLevelBtn.addEventListener('click', () => {
-	mainMenu.style.display = 'none';
-	audioPause();
-	easyLevel.classList.remove('hide-this');
-});
-
-hardLevelBtn.addEventListener('click', () => {
-	mainMenu.style.display = 'none';
-	audioPause();
-	hardLevel.classList.remove('hide-this');
-});
-
-// Go back to Menu from Level Easy
-easyGoToMenu.addEventListener('click', () => {
-	window.location.reload();
-});
-// Go back to Menu from Level Hard
-hardGoToMenu.addEventListener('click', () => {
-	window.location.reload();
-});
-
-const themeSong = document.getElementById('theme-song');
-
-window.addEventListener('DOMContentLoaded', (event) => {
-	console.log('DOM fully loaded and parsed');
-
-	autoPlay();
-});
-
-const autoPlay = () => {
-	themeSong.play(); //play the audio file
-};
-
-const audioPause = () => {
-	themeSong.pause();
-};
 
 /* ============VARIABLES!============ */
 
@@ -100,6 +64,29 @@ let timeEasy;
 let minutesEasy = 0;
 let secondsEasy = 0;
 
+/* ============GAME IMAGES!============ */
+
+// Level Easy
+let marvelCharLevelEasy = [
+	'blackpanther.jpg',
+	'captainamerica.jpg',
+	'drstrange.jpg',
+	'ironman.jpg',
+	'hulk.jpg',
+	'spiderman.jpg',
+	'thor.jpg',
+	'mystique.jpg',
+	'blackpanther.jpg',
+	'captainamerica.jpg',
+	'drstrange.jpg',
+	'ironman.jpg',
+	'hulk.jpg',
+	'spiderman.jpg',
+	'thor.jpg',
+	'mystique.jpg'
+];
+
+// Level Hard
 let marvelCharLevelHard = [
 	'antman.jpg',
 	'blackpanther.jpg',
@@ -138,24 +125,43 @@ let marvelCharLevelHard = [
 	'venom.jpg',
 	'vision.jpg'
 ];
-let marvelCharLevelEasy = [
-	'blackpanther.jpg',
-	'captainamerica.jpg',
-	'drstrange.jpg',
-	'ironman.jpg',
-	'hulk.jpg',
-	'spiderman.jpg',
-	'thor.jpg',
-	'mystique.jpg',
-	'blackpanther.jpg',
-	'captainamerica.jpg',
-	'drstrange.jpg',
-	'ironman.jpg',
-	'hulk.jpg',
-	'spiderman.jpg',
-	'thor.jpg',
-	'mystique.jpg'
-];
+
+easyLevelBtn.addEventListener('click', () => {
+	mainMenu.style.display = 'none';
+	audioPause();
+	easyLevel.classList.remove('hide-this');
+});
+
+hardLevelBtn.addEventListener('click', () => {
+	mainMenu.style.display = 'none';
+	audioPause();
+	hardLevel.classList.remove('hide-this');
+});
+
+const goBackToMenu = (level) => {
+	level.addEventListener('click', () => {
+		window.location.reload();
+	});
+};
+
+goBackToMenu(easyGoToMenu);
+goBackToMenu(hardGoToMenu);
+
+const themeSong = document.getElementById('theme-song');
+
+window.addEventListener('DOMContentLoaded', (event) => {
+	console.log('DOM fully loaded and parsed');
+
+	autoPlay();
+});
+
+const autoPlay = () => {
+	themeSong.play(); //play the audio file
+};
+
+const audioPause = () => {
+	themeSong.pause();
+};
 
 document.querySelector('.main-container').classList.add('hide-this');
 document.querySelector('.easy-main-container').classList.add('hide-this');
@@ -174,16 +180,13 @@ const shuffle = (arr) => {
 shuffle(marvelCharLevelHard);
 shuffle(marvelCharLevelEasy);
 
-document.querySelectorAll('.easy-click-card').forEach((item, i) => {
+easyClickCard.forEach((item, i) => {
 	item.addEventListener('click', () => {
 		userClicksEasy++;
-
 		filterArr(item);
-
 		toggleOnClick(item);
 		item.style.pointerEvents = 'auto';
 		inputAttributeInTileLevelEasy(item, i);
-
 		if (clickedArrNum.length === 2) {
 			document.body.style.pointerEvents = 'none';
 			if (clickedArrNum[0].lastElementChild.style.cssText === clickedArrNum[1].lastElementChild.style.cssText) {
@@ -201,16 +204,13 @@ document.querySelectorAll('.easy-click-card').forEach((item, i) => {
 	});
 });
 
-document.querySelectorAll('.click-card').forEach((item, i) => {
+hardClickCard.forEach((item, i) => {
 	item.addEventListener('click', () => {
 		userClicks++;
-
 		filterArr(item);
-
 		toggleOnClick(item);
 		item.style.pointerEvents = 'auto';
 		inputAttributeInTileLevelHard(item, i);
-
 		if (clickedArrNum.length === 2) {
 			document.body.style.pointerEvents = 'none';
 			if (clickedArrNum[0].lastElementChild.style.cssText === clickedArrNum[1].lastElementChild.style.cssText) {
@@ -257,6 +257,7 @@ const notMatched = () => {
 		}
 	}, 700);
 };
+
 const matched = () => {
 	match++;
 	setTimeout(() => {
@@ -305,13 +306,12 @@ const showTimeEasy = () => {
 	containerWrapperTimeEasy.classList.remove('hide-this');
 };
 
-// Restart function for Moderate Level
 const restartEasy = () => {
 	finalPropmtEasy.classList.add('easy-wrapper-final-prompt-hide');
 	containerWrapperScoreEasy.classList.remove('hide-this');
 	containerWrapperTimeEasy.classList.remove('hide-this');
-	easyPlatformChangeColor.style.backgroundColor = '#e12835';
-	scoreBoardEasy.innerText = 0;
+	changeBlackBackToRed(easyPlatformChangeColor);
+	resetScoreBoard(scoreBoardEasy);
 	shuffle(marvelCharLevelEasy);
 	stopTime(timeEasy);
 	seconds = 0;
@@ -321,13 +321,7 @@ const restartEasy = () => {
 	scoreEasy = 0;
 	matchEasy = 0;
 	userClicksEasy = 0;
-
-	document.querySelectorAll('.easy-click-card').forEach((item) => {
-		item.classList.remove('flipped');
-		setTimeout(() => {
-			item.classList.remove('match');
-		}, 400);
-	});
+	playAgainRemoveMatch(easyClickCard);
 };
 
 // Restart function Level Hard
@@ -335,8 +329,8 @@ const restart = () => {
 	finalPropmt.classList.add('wrapper-final-prompt-hide');
 	containerWrapperScore.classList.remove('hide-this');
 	containerWrapperTime.classList.remove('hide-this');
-	hardPlatformChangeColor.style.backgroundColor = '#e12835';
-	scoreBoard.innerText = 0;
+	changeBlackBackToRed(hardPlatformChangeColor);
+	resetScoreBoard(scoreBoard);
 	shuffle(marvelCharLevelHard);
 	stopTime(time);
 	seconds = 0;
@@ -346,16 +340,28 @@ const restart = () => {
 	score = 0;
 	match = 0;
 	userClicks = 0;
-	document.querySelectorAll('.click-card').forEach((item) => {
+	playAgainRemoveMatch(hardClickCard);
+};
+
+restartGameBtnEasy.addEventListener('click', restartEasy);
+restartGameBtn.addEventListener('click', restart);
+
+const resetScoreBoard = (board) => {
+	board.innerText = 0;
+};
+
+const changeBlackBackToRed = (platform) => {
+	platform.style.backgroundColor = '#e12835';
+};
+
+const playAgainRemoveMatch = (card) => {
+	card.forEach((item) => {
 		item.classList.remove('flipped');
 		setTimeout(() => {
 			item.classList.remove('match');
 		}, 400);
 	});
 };
-
-restartGameBtnEasy.addEventListener('click', restartEasy);
-restartGameBtn.addEventListener('click', restart);
 
 // Timer
 const timeRun = () => {
