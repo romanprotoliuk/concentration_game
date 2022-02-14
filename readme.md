@@ -55,7 +55,7 @@ const shuffle = (arr) => {
 ```
 next thing I did was to add event listeners to my grid. So each time user clicks a tile it logged to the console the unique id of the tile. And then after that I worked the logic of the game. Comparing tiles for a match, checking and keeping track of clicks, matching winning conditions, point system, and accuracy
 
-For my design I was inspired by this codepen [Marvel Codepen](https://codepen.io/samswartz/pen/RjVPPW) - I was able to customize this into my own project and its needs. Also I was inspired by this button design and I implemented it into my own project [Button Codepen](https://codepen.io/dmensinger/pen/PPRzpK).
+For my design I was inspired by this codepen [Marvel Codepen](https://codepen.io/samswartz/pen/RjVPPW) - I was able to customize this into my own project and its needs. Also I was inspired by this [Button Codepen](https://codepen.io/dmensinger/pen/PPRzpK) button design and I implemented it into my own project .
 
 I am proud of this snippet of code below becasue it was really nice to see my logic and my ui come together. It can probably be written more efficient, but I love looking back at it beacause it definitely shows how much I've learned over the last three weeks, and also I am sure that this piece of code will be a good reference to look back at after a year or two and it will help me see how much better I've become. 
 
