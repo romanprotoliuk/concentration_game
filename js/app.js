@@ -46,6 +46,12 @@ const hardLevel = document.querySelector('.main-container');
 // Audio Match
 const matchAudio = new Audio('./sound/match.wav');
 
+// Rules
+const popUpContainer = document.querySelector('.popup-container');
+const openBtn = document.querySelector('.rules-for-game');
+const openBtnHard = document.querySelector('.rules-for-game-hard');
+const closeBtn = document.querySelector('.close');
+
 /* ============VARIABLES!============ */
 
 let clickedArrNum = [];
@@ -442,6 +448,34 @@ const calculateAccuracyEasy = () => {
 
 const playMatch = () => {
 	matchAudio.play();
+};
+
+openBtn.addEventListener('click', () => {
+	popUpContainer.style.display = 'block';
+});
+
+openBtnHard.addEventListener('click', () => {
+	popUpContainer.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', () => {
+	popUpContainer.style.display = 'none';
+});
+
+window.onclick = (e) => {
+	if (e.target == popUpContainer) {
+		popUpContainer.style.display = 'none';
+	}
+};
+
+document.onkeydown = (e) => {
+	switch (e.keyCode) {
+		case 27:
+			popUpContainer.style.display = 'none';
+			break;
+		default:
+			return;
+	}
 };
 
 gridEasy.addEventListener('click', timeRunEasy, { once: true });

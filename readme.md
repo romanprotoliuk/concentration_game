@@ -1,8 +1,13 @@
 # Marvel Match Game
 
 ## Pitch:
+Game rules!
 
-The point of this game is to look for pairs and clear them from the board by turning them over two at a time. When there is a match the player gets ten points and the pair of cards disappear from the board. With each unsuccessful turn one point gets deducted from the scoreboard. Also there is a feature that tracks your accuracy for the game as well as a timer. At the end of the game you’ll get a prompt that states your: time, score, and accuracy. This game also comes in two difficulty levels. Level easy consists of a four by four grid of tiles. Level hard is a six by six grid. I gave it a marvel theme and for images I gathered comics artwork of marvel superheroes and villains.  
+Look for pairs of cards by turning them over 2 at a time. If you find a match, you get 10 points. When a match is unsuccessful, 1 point is deducted from your scoreboard. The goal is to have highest number of points in the shortest amount of time!
+
+This game also comes in two difficulty levels. Level easy consists of a four by four grid of tiles. Level hard is a six by six grid. I gave it a marvel theme and for images I gathered comics artwork of marvel superheroes and villains.  
+
+[Link to game here](https://romanprotoliuk.github.io/marvel_match_game/)
 
 ## Tech Stack:
 
@@ -100,4 +105,4 @@ Overall the game is functional. There is a small bug when a user opens tiles two
 
 I enjoyed working on this project. I pushed myself to the limits and learned alot!
 
-[Link to game here](https://romanprotoliuk.github.io/marvel_match_game/)
+
