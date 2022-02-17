@@ -155,12 +155,6 @@ goBackToMenu(hardGoToMenu);
 
 const themeSong = document.getElementById('theme-song');
 
-window.addEventListener('DOMContentLoaded', (event) => {
-	console.log('DOM fully loaded and parsed');
-
-	autoPlay();
-});
-
 const autoPlay = () => {
 	themeSong.play(); //play the audio file
 };

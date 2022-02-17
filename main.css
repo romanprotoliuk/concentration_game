@@ -1117,10 +1117,10 @@ h3 {
  }
   .restart {
       color: white;
-      margin-top: 20px;
+      margin-top: 10px;
       font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: -0.08rem;
+      letter-spacing: -0.01rem;
       transition: opacity 150ms linear;
       pointer-events: none;
  }
@@ -1128,13 +1128,24 @@ h3 {
       position: relative;
       color: #fff;
       text-transform: uppercase;
-      letter-spacing: -0.2rem;
-      font-size: 2.5rem;
+      letter-spacing: -0.09rem;
+      font-size: 1.8rem;
       margin: 0.05rem 0.05rem 0.5rem;
       padding: 0 0.4rem;
       display: inline-block;
       pointer-events: none;
  }
+
+ .studios:after, .studios:before {
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  background-color: #fff;
+  display: block;
+  /* left: 0.9rem;
+  right: 0.4rem; */
+}
   .easy-platform {
       border-style: none;
  }
@@ -1166,7 +1177,7 @@ h3 {
       background-size: cover;
  }
   .easy-wrapper-for-score-and-time {
-      width: 200px;
+      width: 275px;
       position: absolute;
       left: auto;
       top: -20%;
@@ -1220,6 +1231,58 @@ h3 {
       padding-left: 5px;
       padding-bottom: 0px;
  }
+
+ .easy-wrapper-button {
+  position: absolute;
+  left: 0%;
+  top: auto;
+  right: 0%;
+  bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.easy-button {
+  background: transparent;
+  border-style: solid;
+  color: white;
+  width: 200px;
+  height: 60px;
+  border: 0;
+  font-size: 14px;
+  border-radius: 4px;
+  font-family: 'Raleway', sans-serif;
+  transition: 0.6s;
+  overflow: hidden;
+}
+
+.easy-endgame-wrapper {
+  position: relative;
+  top: 16%;
+  width: 300px;
+  padding: 0 10px;
+}
+.endgame-wrapper {
+  position: relative;
+  top: 22%;
+  width: 300px;
+  padding: 0 10px;
+}
+
+.rules-hard {
+  display: none;
+}
+
+.rules {
+  display: none;
+}
+
 }
 /* Hard Responsive */
 @media screen and (max-width: 991px) {
