@@ -180,8 +180,13 @@ const shuffle = (arr) => {
 shuffle(marvelCharLevelHard);
 shuffle(marvelCharLevelEasy);
 
+
 easyClickCard.forEach((item, i) => {
 	item.addEventListener('click', () => {
+		if (clickedArrNum.length >= 2) {
+            // Ignore click if two cards are already being processed
+            return;
+        }
 		userClicksEasy++;
 		filterArr(item);
 		toggleOnClick(item);
@@ -206,6 +211,10 @@ easyClickCard.forEach((item, i) => {
 
 hardClickCard.forEach((item, i) => {
 	item.addEventListener('click', () => {
+		if (clickedArrNum.length >= 2) {
+            // Ignore click if two cards are already being processed
+            return;
+        }
 		userClicks++;
 		filterArr(item);
 		toggleOnClick(item);
