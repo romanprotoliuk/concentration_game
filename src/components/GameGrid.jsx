@@ -1,14 +1,16 @@
 import React from "react";
 import GameCard from "./GameCard";
 
-const GameGrid = ({ level }) => {
+const GameGrid = ({ level, characters }) => {
   const isEasy = level === "easy";
   const gridSize = isEasy ? 16 : 36;
-  const gridClass = isEasy ? "easy-grid" : "hard-grid";
+  const gridClass = isEasy ? "easy-grid" : "grid";
 
   const handleCardClick = (id) => {
     console.log(`Card clicked: ${id}`);
   };
+
+  console.log("character", characters);
 
   // Example contents for each card - replace with content
   const cardContents = new Array(gridSize)

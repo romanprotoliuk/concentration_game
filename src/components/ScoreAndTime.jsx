@@ -1,8 +1,13 @@
 import React from "react";
 
-const ScoreAndTime = () => {
+const ScoreAndTime = ({ level }) => {
+  const isEasy = level === "easy";
+  const gridClass = isEasy
+    ? "easy-wrapper-for-score-and-time"
+    : "wrapper-for-score-and-time";
+
   return (
-    <div className="easy-wrapper-for-score-and-time">
+    <div className={gridClass}>
       {/* Score Container */}
       <div className="easy-container-wrapper-score">
         <div className="wrapper-score">

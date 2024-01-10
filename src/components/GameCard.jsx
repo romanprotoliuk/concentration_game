@@ -1,4 +1,3 @@
-// GameCard.js
 import React from "react";
 
 const GameCard = ({ id, content, onClick }) => (
