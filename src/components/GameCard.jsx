@@ -10,9 +10,13 @@ const GameCard = ({
   matched,
 }) => (
   <div
-    className={`card easy-click-card` + `${flipped ? " flipped" : ""}`}
+    className={
+      `card easy-click-card` +
+      `${flipped ? " flipped" : ""}` +
+      `${matched ? " matched" : ""}`
+    }
     id={id}
-    onClick={() => handleCardClick(id)}
+    onClick={() => handleCardClick(id, character)}
   >
     <div className="front card-face">{character}</div>
     <div

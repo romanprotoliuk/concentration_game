@@ -330,7 +330,7 @@ h3 {
   display: none;
   transition-delay: 1s;
 }
-.match {
+.matched {
   visibility: hidden;
 }
 .disabled {

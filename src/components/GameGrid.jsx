@@ -22,8 +22,9 @@ const GameGrid = ({ level, characters }) => {
     setShuffledCharacters(shuffle(characters));
   }, []);
 
-  const handleCardClick = (id) => {
+  const handleCardClick = (id, character) => {
     console.log(flippedCards);
+    console.log("character clicked", character);
     if (flippedCards.length >= 2) {
       return;
     }
@@ -31,15 +32,27 @@ const GameGrid = ({ level, characters }) => {
     // setTimerRunning(true);
     // setUserClicks(userClicks => userClicks + 1);
 
-    const newFlippedCards = [...flippedCards, id];
+    // Check if the card is already flipped
+    if (flippedCards.find((card) => card[1] === id)) {
+      return;
+    }
+
+    const newFlippedCards = [...flippedCards, [character, id]];
+
     setFlippedCards(newFlippedCards);
 
+    console.log("newFlippedCards", newFlippedCards);
+
     if (newFlippedCards.length === 2) {
-      const match = newFlippedCards[0] === newFlippedCards[1]; // Replace with your match condition
+      const match = newFlippedCards[0][0] === newFlippedCards[1][0]; // Replace with your match condition
       if (match) {
-        setMatchedCards([...matchedCards, ...newFlippedCards]);
-        // setScore(score => score + 10);
-        // setMatchCount(matchCount => matchCount + 1);
+        setMatchedCards((prevMatched) => [...prevMatched, character]);
+        setTimeout(() => {
+          console.log("matchedCards", matchedCards);
+          setFlippedCards([]);
+          // setScore(score => score + 10);
+          // setMatchCount(matchCount => matchCount + 1);
+        }, 700);
       } else {
         setTimeout(() => {
           setFlippedCards([]);
@@ -61,9 +74,11 @@ const GameGrid = ({ level, characters }) => {
           id={`${level}-${index}`}
           content={cardContents[index]}
           character={shuffledCharacters[index]}
-          handleCardClick={handleCardClick}
-          flipped={flippedCards.includes(`${level}-${index}`)}
-          matched={matchedCards.includes(`${level}-${index}`)}
+          handleCardClick={() =>
+            handleCardClick(`${level}-${index}`, shuffledCharacters[index])
+          }
+          flipped={flippedCards.some((card) => card[1] === `${level}-${index}`)}
+          matched={matchedCards.includes(`${shuffledCharacters[index]}`)}
         />
       ))}
     </div>
