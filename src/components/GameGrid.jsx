@@ -34,9 +34,6 @@ const GameGrid = ({ level, characters }) => {
     const newFlippedCards = [...flippedCards, id];
     setFlippedCards(newFlippedCards);
 
-    console.log("newFlippedCards", newFlippedCards);
-    console.log("flippedCards", flippedCards);
-
     if (newFlippedCards.length === 2) {
       const match = newFlippedCards[0] === newFlippedCards[1]; // Replace with your match condition
       if (match) {
@@ -51,7 +48,6 @@ const GameGrid = ({ level, characters }) => {
       }
     }
   };
-  console.log("character", characters);
 
   const cardContents = new Array(gridSize)
     .fill(null)
