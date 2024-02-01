@@ -12,7 +12,7 @@ This game also comes in two difficulty levels. Level easy consists of a four by 
 
 ## Tech Stack:
 
-HTML, CSS (flexbox, grid), Vanilla JavaScript
+React
 
 ## MVP GOALs
 
