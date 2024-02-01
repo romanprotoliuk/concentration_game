@@ -12,9 +12,9 @@ const Menu = ({ handleClick }) => {
           <div className="easy-level-btn">
             <ChooseLevel level="Easy" handleClick={handleClick} />
           </div>
-          <div className="hard-level-btn">
+          {/* <div className="hard-level-btn">
             <ChooseLevel level="Hard" handleClick={handleClick} />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="images"></div>

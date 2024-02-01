@@ -18,7 +18,7 @@ const GameCard = ({
     id={id}
     onClick={() => handleCardClick(id, character)}
   >
-    <div className="front card-face">{character}</div>
+    <div className="front card-face" />
     <div
       className="back card-face"
       style={{

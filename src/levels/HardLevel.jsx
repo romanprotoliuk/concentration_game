@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import GameGrid from "../GameGrid";
-import ScoreAndTime from "../ScoreAndTime";
-import EndGamePrompt from "../EndGamePrompt";
+import GameGrid from "../components/GameGrid";
+import ScoreAndTime from "../components/ScoreAndTime";
+import EndGamePrompt from "../components/EndGamePrompt";
 
-const HardLevel = ({ handleMenuClick }) => {
+import { useContext } from "react";
+import { GameContext } from "../context/GameContext";
+
+const HardLevel = () => {
+  const { handleMenuClick } = useContext(GameContext);
+
   return (
     <div className="main-container">
       <div className="rules-hard">

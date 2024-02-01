@@ -1,30 +1,65 @@
 import React from "react";
 import GameCard from "./GameCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { shuffle } from "../helpers/shuffle";
+import { GameContext } from "../context/GameContext";
 
 const GameGrid = ({ level, characters }) => {
+  const [showWinMessage, setShowWinMessage] = useState(false);
   const isEasy = level === "easy";
   const gridSize = isEasy ? 16 : 36;
   const gridClass = isEasy ? "easy-grid" : "grid";
 
+  const {
+    userClicks,
+    setUserClicks,
+    timer,
+    setTimer,
+    timerRunning,
+    setTimerRunning,
+    startTimer,
+    stopTimer,
+    score,
+    setScore,
+    matchCount,
+  } = useContext(GameContext);
+
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [shuffledCharacters, setShuffledCharacters] = useState([]);
-  const [score, setScore] = useState(0);
-  const [matchCount, setMatchCount] = useState(0);
-  const [userClicks, setUserClicks] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [timerRunning, setTimerRunning] = useState(false);
 
   useEffect(() => {
     setShuffledCharacters(shuffle(characters));
   }, []);
 
+  useEffect(() => {
+    if (matchedCards.length === 8) {
+      setTimeout(() => setShowWinMessage(true), 700); // Adjust the timeout as needed
+    }
+  }, [matchedCards]);
+
+  // useEffect(() => {
+  //   let interval;
+  //   if (timerRunning) {
+  //     interval = setInterval(() => {
+  //       setTimer((prevTimer) => {
+  //         const newSeconds = (prevTimer.seconds + 1) % 60;
+  //         const newMinutes =
+  //           newSeconds === 0 ? prevTimer.minutes + 1 : prevTimer.minutes;
+  //         return { seconds: newSeconds, minutes: newMinutes };
+  //       });
+  //     }, 1000);
+  //   }
+  //   return () => clearInterval(interval);
+  // }, [timerRunning]);
+
   const handleCardClick = (id, character) => {
-    console.log(flippedCards);
-    console.log("character clicked", character);
+    if (!timerRunning && userClicks === 0) {
+      startTimer();
+    }
+
+    setUserClicks((userClicks) => userClicks + 1);
+
     if (flippedCards.length >= 2) {
       return;
     }
@@ -41,38 +76,59 @@ const GameGrid = ({ level, characters }) => {
 
     setFlippedCards(newFlippedCards);
 
-    console.log("newFlippedCards", newFlippedCards);
-
     if (newFlippedCards.length === 2) {
-      const match = newFlippedCards[0][0] === newFlippedCards[1][0]; // Replace with your match condition
+      const match = newFlippedCards[0][0] === newFlippedCards[1][0];
       if (match) {
         setMatchedCards((prevMatched) => [...prevMatched, character]);
         setTimeout(() => {
-          console.log("matchedCards", matchedCards);
           setFlippedCards([]);
-          // setScore(score => score + 10);
-          // setMatchCount(matchCount => matchCount + 1);
+          setScore((score) => score + 10);
+          // setMatchCount((matchCount) => matchCount + 1);
         }, 700);
       } else {
         setTimeout(() => {
           setFlippedCards([]);
-          // setScore(score => score > 0 ? score - 1 : 0);
+          setScore((score) => (score > 0 ? score - 1 : 0));
         }, 700);
       }
     }
   };
 
-  const cardContents = new Array(gridSize)
-    .fill(null)
-    .map((_, i) => `Content ${i + 1}`);
+  console.log("matchedCards", matchedCards);
+
+  {
+    matchedCards.length === 8 && console.log("You win!");
+  }
 
   return (
     <div className={gridClass}>
+      {showWinMessage && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2, // Ensures the message appears above other elements
+            // Add any additional styling you need here
+          }}
+        >
+          <h1
+            style={{
+              color: "white",
+            }}
+          >
+            You win!
+          </h1>
+        </div>
+      )}
+      {/* <div>
+        Timer: {timer.minutes} mins {timer.seconds} secs
+      </div> */}
       {[...Array(gridSize)].map((_, index) => (
         <GameCard
           key={index}
           id={`${level}-${index}`}
-          content={cardContents[index]}
           character={shuffledCharacters[index]}
           handleCardClick={() =>
             handleCardClick(`${level}-${index}`, shuffledCharacters[index])

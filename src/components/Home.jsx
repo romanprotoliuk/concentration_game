@@ -1,30 +1,26 @@
 import React from "react";
-import { useState } from "react";
+import { useContext } from "react";
 import Menu from "./Menu";
-import EasyLevel from "./GameLevels/EasyLevel";
-import HardLevel from "./GameLevels/HardLevel";
+
+import { GameContext } from "../context/GameContext";
+
+import EasyLevel from "../levels/EasyLevel";
+import HardLevel from "../levels/HardLevel";
 
 const Home = () => {
-  const [menu, setMenu] = useState(true);
-  const [level, setLevel] = useState("");
+  const { menu, setMenu, level, setLevel } = useContext(GameContext);
 
   const handleClick = (e) => {
     setLevel(e.target.innerText.toLowerCase());
     setMenu(false);
   };
 
-  const handleMenuClick = () => {
-    setMenu(!menu);
-  };
-
-  console.log(level);
-
   const renderLevelComponent = () => {
     switch (level) {
       case "easy":
-        return <EasyLevel handleMenuClick={handleMenuClick} />;
+        return <EasyLevel />;
       case "hard":
-        return <HardLevel handleMenuClick={handleMenuClick} />;
+        return <HardLevel />;
       default:
         return null;
     }
